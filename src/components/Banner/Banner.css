@@ -64,11 +64,22 @@
  
 
 .banner-info-title { 
-    font-size: 42px;
+    font-size: 45px;
     color: #fff;
     font-weight: 500;
     text-shadow: 5px 5px 5px #000000;
+    display: block;
     user-select: none;
+}
+
+.banner-info-original-title {
+    font-size: 30px;
+    /* margin-left: 10px; */
+    color: rgb(255, 255, 255);
+    font-weight:200;
+    display: block;
+    user-select: none;
+    text-shadow: 1px 1px 100px #000000;
 }
 
 .banner-info-tag {

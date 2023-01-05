@@ -41,6 +41,7 @@ export const Banner = () => {
                 </div>
                 <div className='banner-info'> 
                     <span className='banner-info-title'>{banner?.title || banner?.name}</span>
+                    <span className='banner-info-original-title'>{banner?.original_title || banner?.original_name}</span>
                     <div className='banner-info-tag'>
                         <span className='banner-info-tag-type'>{banner?.media_type}</span>
                         <span className='banner-info-tag-trend'>Trending</span>
