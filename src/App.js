@@ -1,14 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
 import { Header } from './components/Header/Header';
+import { Route, Routes } from 'react-router-dom';
+import { Home } from './components/Home/Home';
+import { Search } from './components/Search/Search';
+import { Loading } from './components/Loading/Loading';
+import { useStore } from './stored';
+import { useEffect } from 'react';
 
 function App() {
+  
+  const { user, setUser } = useStore((state) => state);
+
+  useEffect(() => {
+    setUser(null);
+  }, [setUser]);
+
+  if (typeof user === "undefined") {
+    return <Loading />
+  }
+
   return (
     <div className="App">
       <Header />
-      <div style={{height: '10000px'}}>
-
-      </div>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/search' element={<Search />} />
+        </Routes>
         
     </div>
   );
