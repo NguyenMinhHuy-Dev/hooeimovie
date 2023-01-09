@@ -19,7 +19,7 @@
 }
 
 .nav {
-    width: 70%;
+    width: 75%;
     height: 100%; 
     margin: 0 auto;
     display: flex;
@@ -48,7 +48,7 @@
 }
 
 .search {
-    width: 40%;
+    width: 30%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -64,6 +64,7 @@
     border-radius: 50px;
     padding: 10px 30px;
     padding-right: 60px;
+    padding-left: 20px;
     outline: none;
     font-size: 18px;
     color: rgb(232, 232, 232);
@@ -205,4 +206,85 @@
     height: 1px;
     background-color: #82c3ec38;
     margin: 10px 0;
+} 
+
+.header-list {
+    width: 400px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header-list-item {
+    width: 49.5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.3s; 
+    position: relative;
+}
+
+.header-list-item:hover {
+    border-bottom: 2px solid #fff;
+    transition: 0.2s;
+}
+
+.header-list-item span {
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.genre-list {
+    position: absolute;
+    min-width: 500px;
+    height: 0; 
+    background-color: #0A2647;
+    z-index: 99;
+    padding: 0px;
+    top: calc(100% + 2px);
+    border-radius: 5px;
+    z-index: 100;
+    transition: 0.3s ;
+    overflow: hidden;
+    text-align: left; 
+    display: grid;
+    grid-template-columns: auto auto auto auto ;
+    gap: 5px;
+    grid-template-rows: auto auto auto auto;
+    /* overflow: hidden; */
+    /* overflow-y: auto; */
+}
+
+.header-list-item:hover .genre-list {
+    padding: 10px;
+    height: 300px;
+    transition: 0.5s ;
+}
+
+.genre-head {
+    display: inline;
+}
+
+.genre-item {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    user-select: none;
+    color: rgb(187, 187, 187);
+    text-align: center;
+    height: 30px;
+    padding-left: 10px;
+}
+
+.genre-item:hover {
+    transition: 0.2s;
+    color: #91d1f9;
+    font-style: bold;
 }

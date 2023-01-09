@@ -1,4 +1,5 @@
 import { ImageFade } from '../Loading/ImageLoading';
+import PlayCircleOutlineTwoToneIcon from '@mui/icons-material/PlayCircleOutlineTwoTone';
 import './Movie.css';
 
 export const Movie = ({ data }) => {
@@ -14,6 +15,7 @@ export const Movie = ({ data }) => {
                 }
                 alt={data.title ? data.title : data.name}
             />
+            <PlayCircleOutlineTwoToneIcon className='play-icon'/>
             <div className='movie-info'>
                 <span className='movie-info-title'>{data.title ? data.title : data.name}    </span>
                 <span className='movie-info-original-title'>{data.original_title ? data.original_title : data.original_name}    </span>

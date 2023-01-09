@@ -7,6 +7,7 @@ import { Search } from './components/Search/Search';
 import { Loading } from './components/Loading/Loading';
 import { useStore } from './stored';
 import { useEffect } from 'react';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   
@@ -27,7 +28,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/search' element={<Search />} />
         </Routes>
-        
+      <Footer />
     </div>
   );
 }

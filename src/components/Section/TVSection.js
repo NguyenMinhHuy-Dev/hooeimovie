@@ -3,15 +3,15 @@ import KeyboardArrowRightTwoToneIcon from '@mui/icons-material/KeyboardArrowRigh
 import { useEffect, useState } from 'react';
 import { Movie } from '../Movie/Movie';
 
-export const MovieSection = ({ type }) => {
+export const TVSection = ({ type }) => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getMovies = () => {
             fetch(type === "trending"
-                ? `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`
-                : `https://api.themoviedb.org/3/movie/${type}?api_key=${process.env.REACT_APP_API_KEY}`)
+                ? `https://api.themoviedb.org/3/trending/tv/week?api_key=${process.env.REACT_APP_API_KEY}`
+                : `https://api.themoviedb.org/3/tv/${type}?api_key=${process.env.REACT_APP_API_KEY}`)
             .then((res) => res.json())
             .then(async (data) => {
                 await setMovies(data.results); 
@@ -30,7 +30,7 @@ export const MovieSection = ({ type }) => {
     return (
         <div className="slider">
             <div className="slider-head">
-                <span className={`slider-head-title ${type}`}>{type === "top_rated" ? "Top rated" : type} movies</span>
+                <span className={`slider-head-title ${type}`}>{type === "top_rated" ? "Top rated" : type} TV</span>
                 {type !== "trending" && <span className="slider-head-more">See all <KeyboardArrowRightTwoToneIcon className="seeall"/></span>}
             </div>
             <div className='slider-extend'>

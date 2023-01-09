@@ -4,6 +4,9 @@ import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import './Header.css'
 import { Link } from 'react-router-dom';
 import { User } from './User';
+import { Genre } from './Genre';
+import { TopRated } from './TopRated';
+import { Upcoming } from './Upcoming';
 
 export const Header = () => {
     const headerRef = useRef(null);
@@ -34,9 +37,11 @@ export const Header = () => {
                     <span className='brand-name'>Hooei's M<LiveTvTwoToneIcon className='logo'/>vie</span>
                 </Link> 
 
-                {/* <div className='header-list'>
-
-                </div> */}
+                <div className='header-list'>
+                    <Genre />
+                    <TopRated />
+                    <Upcoming />
+                </div>
 
                 <div to='/search' className='search'>
                     <input type="text" className='search-input' placeholder='What movie do you want to watch?'/>
@@ -44,10 +49,10 @@ export const Header = () => {
                 </div>
 
                 <div className='user'>
-                    <span className='signup sign'>Sign up</span>
-                    <span className='signin sign'>Sign in</span>
+                    {/* <span className='signup sign'>Sign up</span>
+                    <span className='signin sign'>Sign in</span> */}
 
-                    {/* <User /> */}
+                    <User />
                 </div>
             </div>
         </div>

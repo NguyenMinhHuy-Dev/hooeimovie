@@ -1,0 +1,23 @@
+.genre {
+    width: 49.5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.3s;
+    /* background-color: aliceblue; */
+}
+
+.genre:hover {
+    border-bottom: 2px solid #fff;
+    transition: 0.2s;
+}
+
+.genre span {
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+}

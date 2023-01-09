@@ -12,6 +12,27 @@
     box-shadow: rgba(0, 0, 0, 0.708) 0px 20px 30px -10px;
 }
 
+.movie .play-icon {
+    position: absolute;
+    color: #fff;
+    font-size: 50px;
+    left: 50%;
+    top: 50%;
+    visibility: hidden;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    /* transition: 0.3s; */
+}
+
+.movie:hover::before { 
+    background-image: linear-gradient(#06182b5d ,#040f1cc8 90%);
+}
+
+.movie:hover .play-icon { 
+    visibility: visible;
+    transition: 0.2s;
+}
+
 .movie img {
     /* width: 100%; */
     height: 100%;
@@ -32,6 +53,7 @@
     bottom: 0;
     right: 0;
     z-index: 1;
+    transition: 0.2s;
     background-image: linear-gradient(#06182b00 ,#040f1cb3 90%);
 }
 

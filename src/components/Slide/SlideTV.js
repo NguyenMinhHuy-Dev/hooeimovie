@@ -18,8 +18,7 @@ export const SlideTV = ({ type }) => {
                 : `https://api.themoviedb.org/3/movie/${type}?api_key=${process.env.REACT_APP_API_KEY}`)
             .then((res) => res.json())
             .then(async (data) => {
-                await setMovies(data.results);
-                console.log(movies)
+                await setMovies(data.results); 
                 setLoading(false);
             })
             .catch((err) => {
@@ -44,7 +43,7 @@ export const SlideTV = ({ type }) => {
                 // grabCursor={true}
                 spaceBetween={10}
                 pagination={{ clickable: true }}
-                slidesPerView={5}>
+                slidesPerView={6}>
                     {!loading && movies.map((item) => {
                         return (
                             <SwiperSlide key={item.id}>
