@@ -15,11 +15,14 @@ export const Home = () => {
             <Banner />
             <div className="container">
                 <SlideMovie type="trending" />
-                <MovieSection type="popular" />
+                <MovieSection type="popular" /> 
                 <MovieSection type="upcoming" />
                 <SlideTV type="trending" />
                 <TVSection type="popular" />
                 <TVSection type="top_rated" />
+                <div className="end-section">
+
+                </div>
             </div>
         </div>
     );

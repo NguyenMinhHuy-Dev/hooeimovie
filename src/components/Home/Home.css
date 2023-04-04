@@ -4,3 +4,11 @@
     margin: 0 auto;
     /* background-color: aliceblue; */
 }
+
+.end-section {
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #030b15c3;
+    margin-bottom: 80px;
+}

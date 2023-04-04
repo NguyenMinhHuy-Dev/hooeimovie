@@ -49,10 +49,10 @@ export const Header = () => {
                 </div>
 
                 <div className='user'>
-                    {/* <span className='signup sign'>Sign up</span>
-                    <span className='signin sign'>Sign in</span> */}
+                    <span className='signup sign'>Sign up</span>
+                    <span className='signin sign'>Sign in</span>
 
-                    <User />
+                    {/* <User /> */}
                 </div>
             </div>
         </div>
