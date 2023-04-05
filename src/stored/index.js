@@ -6,11 +6,11 @@ export const useStore = create((set) => ({
     loading: false,
     setUser: (newUser) => 
         set({
-            user: newUser
+            user: newUser,
         }),
     setFavouriteList: (newList) =>
         set({
-            favouriteList: newList
+            favouriteList: newList,
         }),
     setLoading: (newStatus) =>
         set({

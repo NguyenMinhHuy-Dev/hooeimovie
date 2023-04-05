@@ -7,9 +7,12 @@ import { User } from './User';
 import { Genre } from './Genre';
 import { TopRated } from './TopRated';
 import { Upcoming } from './Upcoming';
+import { useStore } from '../../stored'
 
 export const Header = () => {
     const headerRef = useRef(null);
+
+    const user = useStore((state) => state.user);
 
     useEffect(() => {
         const handleScrolled = () => {
@@ -38,9 +41,9 @@ export const Header = () => {
                 </Link> 
 
                 <div className='header-list'>
-                    <Genre />
+                    {/* <Genre />
                     <TopRated />
-                    <Upcoming />
+                    <Upcoming /> */}
                 </div>
 
                 <div to='/search' className='search'>
@@ -49,10 +52,15 @@ export const Header = () => {
                 </div>
 
                 <div className='user'>
-                    <span className='signup sign'>Sign up</span>
-                    <span className='signin sign'>Sign in</span>
+                    {user ? (
+                        <User />
+                    ) : (
+                        <>
+                            <span className='signup sign'>Sign up</span>
+                            <span className='signin sign'>Sign in</span>
+                        </>
+                    )}
 
-                    {/* <User /> */}
                 </div>
             </div>
         </div>

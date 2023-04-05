@@ -18,6 +18,7 @@
     width: 85%; 
     display: grid;
     grid-template-columns: auto auto auto auto auto;
+    gap: 50px;
 }
 
 .link-container .link-items {
@@ -25,7 +26,20 @@
 }
 
 .link-container .link-items .link-item {
-    color: aliceblue;
+    color: #e8eaea;
+    padding-left: 2px;
+    margin: 5px 0;
+    font-size: 18px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.link-item > a {
+    color: #e8eaea;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-left: 2px;
     margin: 5px 0;
     font-size: 18px;
@@ -35,6 +49,16 @@
 
 .link-container .link-items .link-item:not(:first-child):hover {
     color:#0093E9;
+}
+
+.link-container .link-items .link-item:not(:first-child):hover > a {
+    color:#0093E9;
+}
+
+.link-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .link-container .link-items .link-item:first-child {
@@ -47,5 +71,25 @@
     font-weight: 800;
     padding-left: 0;
     margin: 0;
+    cursor: default;
+}
+
+.link-item-icon .fb {
+    color: #0093E9; 
+    /* font-size: 26px; */
+}
+
+.link-item-icon .gh {
+    color:  #e8eaea; 
+    /* font-size: 26px; */
+}
+
+.link-item-icon .ytb {
+    color: #FF0000; 
+    /* font-size: 26px; */
+}
+
+.link-container .link-items .link-item.not-link:hover {
+    color: #e8eaea;
     cursor: default;
 }

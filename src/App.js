@@ -11,15 +11,17 @@ import { Footer } from './components/Footer/Footer';
 
 function App() {
   
-  const { user, setUser } = useStore((state) => state);
+  const { setUser, setFavoriteList, user } = useStore((state) => state);
 
   useEffect(() => {
     setUser(null);
-  }, [setUser]);
+    // setFavoriteList([]);
+  }, [setFavoriteList, setUser]);
+ 
 
-  if (typeof user === "undefined") {
-    return <Loading />
-  }
+  // if (!user) {
+  //   return <Loading />
+  // } 
 
   return (
     <div className="App">

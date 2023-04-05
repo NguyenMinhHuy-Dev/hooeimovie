@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import LiveTvTwoToneIcon from '@mui/icons-material/LiveTvTwoTone';
+import FacebookIcon from '@mui/icons-material/FacebookTwoTone';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import './Footer.css'
 
 export const Footer = () => {
@@ -31,13 +34,26 @@ export const Footer = () => {
                         <li className='link-item'>Horror</li>
                     </ul>
                     <ul className='link-items'>
-                        <li className='link-item'>Contact</li>
-                        <li className='link-item'>Facebook</li> 
-                        <li className='link-item'>Github</li>
-                        <li className='link-item'>Youtube</li>
+                        <li className='link-item link-item'>Contact</li>
+                        <li className='link-item link-item-icon'>
+                            <a href='https://www.facebook.com/profile.php?id=100015232036699' target="_blank">
+                                Facebook <FacebookIcon className='fb'/>
+                            </a>
+                        </li> 
+                        <li className='link-item link-item-icon'>
+                            <a href='https://github.com/hooeiholigan' target="_blank">
+                                Github <GitHubIcon className='gh'/>
+                            </a>
+                        </li>
+                        <li className='link-item link-item-icon'>
+                            <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley' target="_blank">
+                                Youtube <YouTubeIcon className='ytb'/>
+                            </a>
+                        </li>
                     </ul>
                     <ul className='link-items'>
                         <li className='link-item'>Terms of service</li> 
+                        <li className='link-item not-link'>© 2023 hooeimovie.vercel.app</li>
                     </ul>
                 </div>
             </div>
