@@ -8,11 +8,12 @@ import { Genre } from './Genre';
 import { TopRated } from './TopRated';
 import { Upcoming } from './Upcoming';
 import { useStore } from '../../stored'
+import { SignIn } from './SignInForm/SignIn';
 
 export const Header = () => {
     const headerRef = useRef(null);
 
-    const user = useStore((state) => state.user);
+    const { setSignIn, user, signin } = useStore((state) => state);
 
     useEffect(() => {
         const handleScrolled = () => {
@@ -32,6 +33,11 @@ export const Header = () => {
         window.addEventListener("scroll", handleScrolled);
         return () => window.removeEventListener("scroll", handleScrolled);
     }, []);
+
+    const handleClickSignIn = () => {
+        setSignIn(true);
+        // alert("click");
+    }
 
     return (
         <div ref={headerRef} className='header'>
@@ -56,8 +62,11 @@ export const Header = () => {
                         <User />
                     ) : (
                         <>
-                            <span className='signup sign'>Sign up</span>
-                            <span className='signin sign'>Sign in</span>
+                            {/* <span className='signup sign'>Sign up</span> */}
+                            <span 
+                                className='signin sign'
+                                onClick={handleClickSignIn}
+                            >Sign in</span> 
                         </>
                     )}
 

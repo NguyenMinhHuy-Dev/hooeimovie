@@ -4,6 +4,7 @@ export const useStore = create((set) => ({
     user: undefined,
     favouriteList: [],
     loading: false,
+    signin: false,
     setUser: (newUser) => 
         set({
             user: newUser,
@@ -15,5 +16,9 @@ export const useStore = create((set) => ({
     setLoading: (newStatus) =>
         set({
             loading: newStatus
+        }),
+    setSignIn: (newStatus) =>
+        set({
+            signin: newStatus
         }),
 }));
