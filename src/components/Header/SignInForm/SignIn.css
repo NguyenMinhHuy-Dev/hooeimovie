@@ -10,7 +10,7 @@
 }
 
 .login-form {
-    width: 60%;
+    width: 30%;
     height: 700px;
     background: linear-gradient(135deg, #0a2747a5, #06182b78);
     backdrop-filter: blur(20px);
@@ -19,11 +19,15 @@
     border-radius: 5px;
     padding: 5px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    position: relative;
+    overflow: hidden;
 }
 
 .login-form-header {
-    width: 100%;
+    /* width: 100%; */
+    right: 7px;
     text-align: right;
+    position: absolute;
 }
 
 .login-form-header .icon-quit {
@@ -34,4 +38,189 @@
 
 .login-form-header .icon-quit:hover {
     color: #0093E9;  
+}
+
+.form-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    padding-top: 50px;
+} 
+
+.form-left {
+    width: 0%;
+    height: 100%;
+    /* background-color: #0093E9; */
+    transition: 0.2s ease-in-out;
+    overflow: hidden;
+    /* display: flex;
+    justify-content: center; */
+    /* flex-direction: column; */
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.form-right {
+    width: 0%;
+    height: 100%; 
+    transition: 0.2s ease-in-out;
+    text-align: center;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.form-left.active {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    /* background-color: #0093E9; */
+    transition: 0.5s ease-in-out;
+    visibility: visible;
+}
+
+.form-right.active {
+    width: 100%;
+    height: 100%; 
+    transition: 0.5s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+}
+
+.form-heading {
+    font-size: 40px;
+    letter-spacing: 3px;
+    font-weight: 900;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+    display: block;
+    margin-bottom: 30px; 
+}
+
+.form-heading.sub {
+    font-size: 30px;
+    font-weight: 500;
+    color: #0093E9;
+    margin: 30px 0;
+}
+
+.inputs-group {
+    width: 80%;
+    margin: 0 auto;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+.inputs-group .input {
+    width: 100%;
+    height: 45px;
+    display: block;
+    background-color: rgba(54, 52, 67, 0.711);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 30px;
+    padding-right: 60px;
+    padding-left: 20px;
+    outline: none;
+    font-size: 18px;
+    color: rgb(242, 242, 242);
+    box-shadow: rgb(21, 31, 41) 0px 20px 30px -10px;
+}
+
+.inputs-group .input.error {
+    border: 2px solid #e74c3c; 
+}
+
+.error-span {
+    color: #e74c3c;
+    font-size: 15px;  
+    letter-spacing: 2px; 
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: block; 
+    visibility: hidden;
+} 
+
+.form-container .sign {
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    transition: 0.3s linear;
+}
+
+.form-container .sign:hover {
+    background-image: linear-gradient(160deg, #0093E9 100%, #80D0C7 0%);
+    background-size: 400px 400px;
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    transition: 0.1s ease-in;
+}
+
+.label-span {
+    display: inline-flex;
+    /* width: 80%; */
+    margin: 0 20px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600; 
+    cursor: pointer; 
+}
+
+.label-span.signup-span {
+    justify-content: right;
+}
+/* .label-span.signup-span {
+    justify-content: right;
+} */
+
+.label-span.signup-span:hover {
+    color: #82C3EC;
+    transition: 0.3s;
+}
+
+.other-signin {
+    width: 55%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 20px auto;
+    display: flex;
+    padding: 5px 20px;
+    justify-content: space-between  ;
+    align-items: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.1s;
+}
+
+.other-signin:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.other-signin.gg { 
+    color: #DB4437;
+    background-color: #fff; 
+}
+
+.other-signin.fb { 
+    color: #fff;
+    background-color: #4285F4; 
+}
+
+.other-signin .google {
+    font-size: 35px;
+    color: #F4B400;
+}
+
+.other-signin .facebook {
+    font-size: 35px;
+    color: #fff;
 }
