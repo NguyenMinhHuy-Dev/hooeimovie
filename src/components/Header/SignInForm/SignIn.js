@@ -6,7 +6,7 @@ import { useStore } from '../../../stored'
 import { SignUp } from './SignUp';
 import { useState } from 'react';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider } from '../../../config/firebase';
+import { auth, facebookProvider, googleProvider } from '../../../config/firebase';
 import { Loading } from '../../Loading/Loading';
 import { addUser } from '../../../actions/firebaseActions';
 
@@ -82,7 +82,7 @@ export const SignIn = () => {
                                     <span>Sign in with Google</span>
                                     <GoogleIcon className='google'/>
                                 </div>
-                                <div className='other-signin fb'>
+                                <div className='other-signin fb' onClick={() => {handleLogin(facebookProvider)}}>
                                     <span>Sign in with Facebook</span>
                                     <FacebookIcon className='facebook'/>
                                 </div>
