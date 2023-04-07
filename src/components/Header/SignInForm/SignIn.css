@@ -11,7 +11,7 @@
 
 .login-form {
     width: 30%;
-    height: 700px;
+    min-height: 700px;
     background: linear-gradient(135deg, #0a2747a5, #06182b78);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);  
@@ -183,13 +183,13 @@
 }
 
 .other-signin {
-    width: 55%;
+    width: 80%;
     height: 50px;
-    border-radius: 10px;
+    border-radius: 100px;
     background-color: #fff;
     margin: 20px auto;
     display: flex;
-    padding: 5px 20px;
+    padding: 5px 40px;
     justify-content: space-between  ;
     align-items: center;
     font-weight: 600;

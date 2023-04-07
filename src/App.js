@@ -9,19 +9,31 @@ import { useStore } from './stored';
 import { useEffect } from 'react';
 import { Footer } from './components/Footer/Footer';
 import { SignIn } from './components/Header/SignInForm/SignIn';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './config/firebase';
 
 function App() {
   
-  const { setUser, setFavoriteList, user, signin } = useStore((state) => state);
+  const { setUser, setFavoriteList, user, signin, loading } = useStore((state) => state);
 
   useEffect(() => {
-    setUser(null); 
-    // setFavoriteList([]);
-  }, [setFavoriteList, setUser]);
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setUser(user);
+        return;
+      }
 
+      setUser(null);
+
+      return () => {
+        unsub();
+      }
+    }); 
+  }, [setFavoriteList, setUser]);
+ 
   return (
     <>
-    {signin && <SignIn />}
+    {signin && <SignIn />} 
     <div className="App">
         <Header />
           <Routes>

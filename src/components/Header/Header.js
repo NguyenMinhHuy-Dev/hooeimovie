@@ -35,8 +35,7 @@ export const Header = () => {
     }, []);
 
     const handleClickSignIn = () => {
-        setSignIn(true);
-        // alert("click");
+        setSignIn(true); 
     }
 
     return (
@@ -66,7 +65,9 @@ export const Header = () => {
                             <span 
                                 className='signin sign'
                                 onClick={handleClickSignIn}
-                            >Sign in</span> 
+                            >
+                                Sign in
+                            </span> 
                         </>
                     )}
 
