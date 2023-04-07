@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../config/firebase';
 import { useStore } from '../../../stored';
+import { addUser } from '../../../actions/firebaseActions';
 
 export const SignUp = () => { 
     const [error, setError] = useState("");
@@ -13,7 +14,7 @@ export const SignUp = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const { setUser, setSignIn, signin, user } = useStore((state) => state);
+    const { setUser, setSignIn, setLoading, signin, user } = useStore((state) => state);
 
     const handleClickSignIn = (e) => {
         document.getElementById("form-left").classList.add("active");
@@ -21,17 +22,24 @@ export const SignUp = () => {
     }
 
     const handleClickButtonSignUp = async () => {
+        setLoading(true);
         if (confirmPassword !== password) {
             await setError("Passwords are not the same!"); 
+            setLoading(false);
         }
         else { 
             await createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                const { displayName, email, photoURL, uid } = userCredential.user;  
+                addUser({ displayName, email, photoURL, uid });
+
                 setUser(userCredential.user);
                 setSignIn(false);
+                setLoading(false);
             })
             .catch((err => {
                 setError(err.message);
+                setLoading(false);
             }));
         }
     }

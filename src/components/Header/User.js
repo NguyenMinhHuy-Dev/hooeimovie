@@ -33,7 +33,7 @@ export const User = ({ user }) => {
 
     return (
         <div className="header-user">
-            <img onClick={handleUserClicked} src={user.photoURL} className="user-avater" alt="avatar"/>
+            <img onClick={handleUserClicked} src={user.photoURL || 'https://f10-zpcloud.zdn.vn/94722087477964222/7895e56b0b48d7168e59.jpg'} className="user-avater" alt="avatar"/>
             {/* <ArrowDropDownIcon className='drop-icon'/> */}
             <ul ref={userRef} className='user-list'>
                 <li className='user-list-item'> 
