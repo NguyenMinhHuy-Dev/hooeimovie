@@ -59,7 +59,7 @@ export const Header = () => {
 
                 <div className='user'>
                     {user ? (
-                        <User />
+                        <User user={user} />
                     ) : (
                         <>
                             {/* <span className='signup sign'>Sign up</span> */}

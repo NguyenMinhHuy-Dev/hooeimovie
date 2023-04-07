@@ -4,9 +4,15 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { useStore } from '../../../stored'
 import { SignUp } from './SignUp';
+import { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../config/firebase';
 
 export const SignIn = () => { 
-    const { setSignIn, signin } = useStore((state) => state);
+    const { setUser, setSignIn, signin, user } = useStore((state) => state);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const handleClickSQuit = () => {
         setSignIn(false); 
@@ -15,6 +21,17 @@ export const SignIn = () => {
     const handleClickSignUp = (e) => {
         document.getElementById("form-left").classList.remove("active");
         document.getElementById("form-right").classList.add("active");
+    }
+
+    const handleClickButtonSignIn = async () => {
+        await signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            setUser(userCredential.user);
+            setSignIn(false);
+        })
+        .catch((err => {
+            setError(err.message);
+        }));
     }
 
     return (
@@ -30,13 +47,13 @@ export const SignIn = () => {
                     <div id='form-left' className='form-left active' >
                         <span className='form-heading'>SIGN IN</span>
                         <div className='inputs-group'>
-                            <input type='email' className='input' placeholder='Enter your email'/>
+                            <input type='email' className='input' value={email} onChange={(e) => {setEmail(e.target.value)}} placeholder='Enter your email'/>
                         </div>
                         <div className='inputs-group'>
-                            <input type='password' className='input' placeholder='Enter your password'/>
+                            <input type='password' className='input' value={password} onChange={(e) => {setPassword(e.target.value)}} placeholder='Enter your password'/>
                         </div>
-                        <span className='error-span'>Invalid email or password!</span>
-                        <span className='signin sign'>Sign in</span>
+                        <span className='error-span'>{error}</span>
+                        <span className='signin sign' onClick={handleClickButtonSignIn}>Sign in</span>
                         <span className='label-span signup-span' onClick={handleClickSignUp}>Sign up </span>
                         <span className='form-heading sub'>or</span>
                         <div className='other-signin gg'>

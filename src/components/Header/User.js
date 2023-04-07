@@ -5,9 +5,13 @@ import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import MeetingRoomTwoToneIcon from '@mui/icons-material/MeetingRoomTwoTone';
 import { useRef, useState } from 'react';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../config/firebase';
+import { useStore } from '../../stored';
 
-export const User = () => {
+export const User = ({ user }) => {
     const [drop, setDrop] = useState(false);
+    const { setUser } = useStore((state) => state);
 
     const userRef = useRef(null);
 
@@ -20,6 +24,11 @@ export const User = () => {
             user.classList.add("active");
         }
         setDrop(!drop)
+    }
+
+    const handleClickSignOut = () => {
+        signOut(auth);
+        setUser(null);
     }
 
     return (
@@ -46,7 +55,7 @@ export const User = () => {
                     Setting
                 </li>
                 <div className='line'></div>
-                <li className='user-list-item'>
+                <li className='user-list-item' onClick={handleClickSignOut}>
                     <MeetingRoomTwoToneIcon className='user-icon'/>
                     Sign out
                 </li>
