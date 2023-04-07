@@ -11,6 +11,7 @@ import { Footer } from './components/Footer/Footer';
 import { SignIn } from './components/Header/SignInForm/SignIn';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './config/firebase';
+import { SeeAll } from './components/SeeAll/SeeAll';
 
 function App() {
   
@@ -39,6 +40,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/search' element={<Search />} />
+            <Route path='/:media_type/:type' element={<SeeAll />} />
           </Routes>
         <Footer />
     </div>

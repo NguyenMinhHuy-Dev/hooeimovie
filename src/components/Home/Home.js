@@ -20,9 +20,7 @@ export const Home = () => {
                 <SlideTV type="trending" />
                 <TVSection type="popular" />
                 <TVSection type="top_rated" />
-                <div className="end-section">
-
-                </div>
+                <div className="end-section"></div>
             </div>
         </div>
     );
