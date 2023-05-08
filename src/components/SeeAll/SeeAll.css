@@ -1,5 +1,17 @@
-.see-all {
+.see-all-container {  
+    padding-top: 70px; 
+    position: relative;
+    padding-bottom: 100px;
+} 
+
+.see-all-title {
     width: 100%;
+}
+
+.see-all_movies {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    /* background-color: aliceblue; */
     min-height: 100vmin; 
-    padding-top: 70px;
 }
