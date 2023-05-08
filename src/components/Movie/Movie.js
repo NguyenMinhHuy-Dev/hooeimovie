@@ -4,9 +4,9 @@ import './Movie.css';
 
 export const Movie = ({ data }) => {
     const { poster_path } = data;
-
+    // console.log(poster_path)
     return (
-        <div className='movie'>
+        <div className='movie' id={data.id}>
             <ImageFade 
                 lazy_src={
                     poster_path

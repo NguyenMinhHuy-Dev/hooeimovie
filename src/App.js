@@ -12,6 +12,7 @@ import { SignIn } from './components/Header/SignInForm/SignIn';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './config/firebase';
 import { SeeAll } from './components/SeeAll/SeeAll';
+import { Detail } from './components/Detail/Detail';
 
 function App() {
   
@@ -41,6 +42,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/search' element={<Search />} />
             <Route path='/:media_type/:type' element={<SeeAll />} />
+            <Route path='/:media_type/detail/:id' element={<Detail />} />
           </Routes>
         <Footer />
     </div>

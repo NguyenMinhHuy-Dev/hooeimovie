@@ -1,17 +1,29 @@
 .see-all-container {  
-    padding-top: 70px; 
-    position: relative;
+    padding-top: 100px;  
     padding-bottom: 100px;
 } 
 
+/* .see-al {
+    margin-top: 100px;
+} */
+
 .see-all-title {
     width: 100%;
+    height: 40px;
+    /* background-color: aliceblue; */
+    display: flex;
+    margin-bottom: 30px;
 }
 
 .see-all_movies {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 10px;
+    gap: 10px; 
     /* background-color: aliceblue; */
     min-height: 100vmin; 
+}
+
+.see-all_movies a {
+    display: inherit;
 }
