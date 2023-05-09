@@ -11,12 +11,12 @@
 .select-input { 
     width: 100%;
     height: 100%;
-    background-color: rgba(54, 52, 67, 0.9);
+    
     border: none;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
     padding: 10px 30px;
     padding-right: 60px;
     padding-left: 20px;
@@ -24,10 +24,16 @@
     user-select: none; 
     display: flex;
     align-items: center;
+
+    background: linear-gradient(135deg, #0d345ea5, #0a294978);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: 0.1s; 
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
   
 .select-input span {
-    font-size: 18px;
+    font-size: 16px;
     color: rgb(232, 232, 232);
 }
   
@@ -59,7 +65,9 @@
     flex-basis: 30px;
   }
   
-  .select-title {
+  .select-title-value,
+  .select-title,
+  .select-title-default {
     color: rgb(232, 232, 232);
     transition: 0.1s;
   }

@@ -1,4 +1,4 @@
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
 import './SeeAll.css'
 import { useCallback, useEffect, useState } from 'react';
 import { Title } from '../Title/Title';
@@ -6,17 +6,6 @@ import { Loading } from '../Loading/Loading';
 import { Skeleton } from '../Skeleton/Skeleton';
 import { Movie } from '../Movie/Movie';
 import SelectCustom from '../SelectCustom/SelectCustom';
-
-const mediaTypes = [
-    {
-        mediaType: "Movie",
-        mediaTitle: "Movie",
-    },
-    {
-        mediaType: "TV",
-        mediaTitle: "TV",
-    },
-];
 
 const types = [
     {
@@ -31,9 +20,28 @@ const types = [
         mediaType: "Upcoming",
         mediaTitle: "Upcoming",
     },
+    {
+        mediaType: "Latest",
+        mediaTitle: "Latest",
+    },
+];
+
+const mediaTypes = [
+    {
+        mediaType: "Movie",
+        mediaTitle: "Movie",
+        // mediaLink: `/movie/${type}`,
+    },
+    {
+        mediaType: "TV",
+        mediaTitle: "TV",
+        // mediaLink: `/tv/${type}`,
+    },
 ];
 
 export const SeeAll = () => {
+    const navigate = useNavigate();
+
     const { media_type, type } = useParams();
 
     const [movies, setMovies] = useState([]);
@@ -52,7 +60,7 @@ export const SeeAll = () => {
         (media_type, type) => {
             let apiSeeAll = "";
             if (type === "trending") {
-                apiSeeAll = `https://api.themoviedb.org/3/trending/${type}/${media_type}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
+                apiSeeAll = `https://api.themoviedb.org/3/${type}/${media_type}/week?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
             }
             else {                
                 apiSeeAll = `https://api.themoviedb.org/3/${media_type}/${type}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
@@ -72,7 +80,7 @@ export const SeeAll = () => {
 
             apiSeeAll = "";
             if (type === "trending") {
-                apiSeeAll = `https://api.themoviedb.org/3/trending/${type}/${media_type}?api_key=${process.env.REACT_APP_API_KEY}&page=${page + 1}`
+                apiSeeAll = `https://api.themoviedb.org/3/${type}/${media_type}/week?api_key=${process.env.REACT_APP_API_KEY}&page=${page + 1}`
             }
             else {                
                 apiSeeAll = `https://api.themoviedb.org/3/${media_type}/${type}?api_key=${process.env.REACT_APP_API_KEY}&page=${page + 1}`
@@ -83,7 +91,7 @@ export const SeeAll = () => {
                 .then((data) => {
                     setMovies((prev) => [...prev, ...data.results]);
                     setTotalPages(data.total_pages);
-                    setLoading(false); 
+                    setLoading(false);   
                 })
                 .catch((err) => {
                     setLoading(false);
@@ -91,7 +99,7 @@ export const SeeAll = () => {
             }
         },
         [page]
-    );
+    ); 
 
     const nextPage = () => {
         setPage(page + 2);
@@ -104,20 +112,30 @@ export const SeeAll = () => {
     useEffect(() => {
         setLoading(true);
         getSeeAll(media_type, type);
-    }, [page, getSeeAll, media_type, type]);
+        
+        // alert(media_type)
+    }, [media_type, type, page, getSeeAll]);
 
     function capitalizeFirstLetter(string) {
         return string[0].toUpperCase() + string.slice(1);
     }
     
+    const handleDiscover = () => {
+        const MediaType = document.getElementById('mediatype').textContent.toLowerCase();
+        const Type = document.getElementById('type').textContent.toLowerCase();
+        
+        navigate(`/${MediaType}/${Type}`);
+    }
+
     return ( 
         <div className='container see-all-container'> 
             <div className='see-all'>
                 <Title title={`${media_type.toUpperCase()} | ${type.toUpperCase()}`} />
                 <div className='see-all-title'>
                     {/* <span className={`slider-head-title trending`}>{type} movies</span>  */}
-                    <SelectCustom data={mediaTypes} placeholder={capitalizeFirstLetter(media_type)} /> 
-                    <SelectCustom data={types} placeholder={capitalizeFirstLetter(type)} /> 
+                    {/* <SelectCustom id="mediatype" data={mediaTypes} placeholder={capitalizeFirstLetter(media_type)} selectTitle="--Media Types--"/> 
+                    <SelectCustom id="type" data={types} placeholder={capitalizeFirstLetter(type)} selectTitle="--Types--" /> 
+                    <span className='signin sign' onClick={handleDiscover}>Discover</span> */}
                 </div>
                 
                 <div className='see-all_movies'>
