@@ -36,6 +36,9 @@ export const MovieSection = ({ type }) => {
                     <Link to={`/movie/${type}`}>
                         <span className="slider-head-more">See all <KeyboardArrowRightTwoToneIcon className="seeall"/></span>
                     </Link>
+                    // <Link to={`/discover`}>
+                    //     <span className="slider-head-more">Discover Now <KeyboardArrowRightTwoToneIcon className="seeall"/></span>
+                    // </Link>
                 }
             </div>
             <div className='slider-extend'>

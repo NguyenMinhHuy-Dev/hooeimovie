@@ -7,38 +7,6 @@ import { Skeleton } from '../Skeleton/Skeleton';
 import { Movie } from '../Movie/Movie';
 import SelectCustom from '../SelectCustom/SelectCustom';
 
-const types = [
-    {
-        mediaType: "Trending",
-        mediaTitle: "Trending",
-    },
-    {
-        mediaType: "Popular",
-        mediaTitle: "Popular",
-    },
-    {
-        mediaType: "Upcoming",
-        mediaTitle: "Upcoming",
-    },
-    {
-        mediaType: "Latest",
-        mediaTitle: "Latest",
-    },
-];
-
-const mediaTypes = [
-    {
-        mediaType: "Movie",
-        mediaTitle: "Movie",
-        // mediaLink: `/movie/${type}`,
-    },
-    {
-        mediaType: "TV",
-        mediaTitle: "TV",
-        // mediaLink: `/tv/${type}`,
-    },
-];
-
 export const SeeAll = () => {
     const navigate = useNavigate();
 
@@ -48,6 +16,8 @@ export const SeeAll = () => {
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState();
     const [page, setPage] = useState(1);
+
+    const [banner, setBanner] = useState(null); 
 
     const scrollTop = () => {
         window.scrollTo({
@@ -73,6 +43,8 @@ export const SeeAll = () => {
                     setMovies((prev) => [...prev, ...data.results]);
                     setTotalPages(data.total_pages);
                     setLoading(false); 
+                    const random = Math.floor(Math.random() * (19 - 0 + 1) + 0);
+                    setBanner(data.results[random]); 
                 })
                 .catch((err) => { 
                 })
@@ -99,21 +71,20 @@ export const SeeAll = () => {
             }
         },
         [page]
-    ); 
+    );  
 
     const nextPage = () => {
         setPage(page + 2);
     }
 
     useEffect(() => {
-        scrollTop();
+        scrollTop(); 
     }, [])
 
     useEffect(() => {
         setLoading(true);
         getSeeAll(media_type, type);
-        
-        // alert(media_type)
+         
     }, [media_type, type, page, getSeeAll]);
 
     function capitalizeFirstLetter(string) {
@@ -131,12 +102,17 @@ export const SeeAll = () => {
         <div className='container see-all-container'> 
             <div className='see-all'>
                 <Title title={`${media_type.toUpperCase()} | ${type.toUpperCase()}`} />
-                <div className='see-all-title'>
-                    {/* <span className={`slider-head-title trending`}>{type} movies</span>  */}
-                    {/* <SelectCustom id="mediatype" data={mediaTypes} placeholder={capitalizeFirstLetter(media_type)} selectTitle="--Media Types--"/> 
-                    <SelectCustom id="type" data={types} placeholder={capitalizeFirstLetter(type)} selectTitle="--Types--" /> 
-                    <span className='signin sign' onClick={handleDiscover}>Discover</span> */}
+                <div className='banner' style={{
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original${banner?.backdrop_path})`,
+                }}>
+                    <div className='see-all-title'>
+                        <span className={`slider-head-title trending`}>{type} movies</span>  
+                        <span className='page-number'>Page {page}</span>
+                    </div>
                 </div>
+                {/* <div className='see-all-title'>
+                    <span className={`slider-head-title trending`}>{type} movies</span>  
+                </div> */}
                 
                 <div className='see-all_movies'>
                     {!loading ? (  

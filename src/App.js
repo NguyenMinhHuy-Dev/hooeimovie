@@ -42,6 +42,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/search' element={<Search />} />
             <Route path='/:media_type/:type' element={<SeeAll />} />
+            <Route path='/discover' element={<SeeAll />} />
             <Route path='/:media_type/detail/:id' element={<Detail />} />
           </Routes>
         <Footer />

@@ -48,7 +48,16 @@ export const Header = () => {
                 <div className='header-list'>
                     {/* <Genre />
                     <TopRated />
-                    <Upcoming /> */}
+                    <Upcoming /> */} 
+                    <div className='header-list-item TopRated'>
+                        <span>Home</span>
+                    </div> 
+                    <div className='header-list-item TopRated'>
+                        <span>Discover</span>
+                    </div> 
+                    <div className='header-list-item TopRated'>
+                        <span>About Us</span>
+                    </div> 
                 </div>
 
                 <div to='/search' className='search'>

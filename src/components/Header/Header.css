@@ -5,17 +5,16 @@
     background-color: transparent;
     top: 0; 
     z-index: 99;
-    transition: 0.3s;
+    /* transition: 0.2s ease-in-out; */
 }
 
 .header.scrolled {
     background: linear-gradient(135deg, #06182b8a, #06182b3e);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px); 
-    
-    /* background-color: #06182b; */
+     
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
-    transition: 0.1s;
+    transition: 0.1s ease;
 }
 
 .nav {
@@ -59,7 +58,10 @@
 .search .search-input {
     width: 100%;
     height: 70%;
-    background-color: rgba(54, 52, 67, 0.9);
+    /* background-color: rgba(54, 52, 67, 0.9); */
+    background: linear-gradient(135deg, #06182bb2, #040f1b63);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); 
     border: none;
     border-radius: 50px;
     padding: 10px 30px;
@@ -79,8 +81,8 @@
     height: 70%;
     cursor: pointer;
     border-radius: 50%;
-    background-color: rgb(54, 52, 67);
-    color: #000;
+    /* background-color: rgb(54, 52, 67); */
+    color: #535353;
     transition: 0.3s;
 }
 
@@ -106,12 +108,15 @@
 
 .signin {
     margin-left: 15px;
-    background-color: #EB455F;
+    /* background-color: #EB455F; */
+    background: linear-gradient(135deg, #fa3c58c7, #c70a2686);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); 
 }
 
 .signup:hover { 
     color: #82C3EC;
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 .signin:hover { 

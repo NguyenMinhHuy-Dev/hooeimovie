@@ -8,8 +8,9 @@
     /* background-color: aliceblue; */
     background-position: top center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:  cover;
     aspect-ratio: 2/1;
+    background-attachment: fixed;
 }
 
 .banner::after {
@@ -23,7 +24,7 @@
     right: 0;
     bottom: 0;
     background-color: #06182b6f;
-    background-image: linear-gradient(#06182b00, #06182b3b ,#06182b 99%);
+    background-image: linear-gradient(#06182b1a, #06182b3b ,#06182b 99%);
     
 }
 
