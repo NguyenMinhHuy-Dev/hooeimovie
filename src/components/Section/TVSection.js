@@ -2,6 +2,7 @@ import './MovieSection.css';
 import KeyboardArrowRightTwoToneIcon from '@mui/icons-material/KeyboardArrowRightTwoTone';
 import { useEffect, useState } from 'react';
 import { Movie } from '../Movie/Movie';
+import { Link } from 'react-router-dom';
 
 export const TVSection = ({ type }) => {
     const [movies, setMovies] = useState([]);
@@ -31,7 +32,12 @@ export const TVSection = ({ type }) => {
         <div className="slider">
             <div className="slider-head">
                 <span className={`slider-head-title ${type}`}>{type === "top_rated" ? "Top rated" : type} TV</span>
-                {type !== "trending" && <span className="slider-head-more">See all <KeyboardArrowRightTwoToneIcon className="seeall"/></span>}
+                {type !== "trending" && 
+                    <Link to={`/tv/${type}`}>
+                        <span className="slider-head-more">See all <KeyboardArrowRightTwoToneIcon className="seeall"/></span>
+                    </Link>
+                    // <span className="slider-head-more">See all <KeyboardArrowRightTwoToneIcon className="seeall"/></span>
+                }
             </div>
             <div className='slider-extend'>
                 {!loading && movies.map((item) => {

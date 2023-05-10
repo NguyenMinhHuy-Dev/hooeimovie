@@ -16,7 +16,7 @@ import { Detail } from './components/Detail/Detail';
 
 function App() {
   
-  const { setUser, setFavoriteList, user, signin, loading } = useStore((state) => state);
+  const { setUser, setFavoriteList, user, signin } = useStore((state) => state);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
@@ -33,6 +33,10 @@ function App() {
     }); 
   }, [setFavoriteList, setUser]);
  
+  // if (typeof user === "undefined") {
+  //   return <Loading />;
+  // }
+
   return (
     <>
     {signin && <SignIn />} 
