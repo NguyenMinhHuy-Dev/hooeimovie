@@ -49,8 +49,11 @@ export const Header = () => {
                     {/* <Genre />
                     <TopRated />
                     <Upcoming /> */} 
+                    
                     <div className='header-list-item TopRated'>
-                        <span>Home</span>
+                        <Link to="/" className='header-list-item-link'>
+                            <span>Home</span>
+                        </Link>
                     </div> 
                     <div className='header-list-item TopRated'>
                         <span>Discover</span>

@@ -232,6 +232,14 @@
     position: relative;
 }
 
+.header-list-item-link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .header-list-item:hover {
     border-bottom: 2px solid #fff;
     transition: 0.2s;

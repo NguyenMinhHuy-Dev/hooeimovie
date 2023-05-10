@@ -6,6 +6,8 @@ import { Loading } from '../Loading/Loading';
 import { Skeleton } from '../Skeleton/Skeleton';
 import { Movie } from '../Movie/Movie';
 import SelectCustom from '../SelectCustom/SelectCustom';
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
+import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
 export const SeeAll = () => {
     const navigate = useNavigate();
@@ -40,41 +42,52 @@ export const SeeAll = () => {
                 fetch(`${apiSeeAll}`)
                 .then((res) => res.json())
                 .then((data) => {
-                    setMovies((prev) => [...prev, ...data.results]);
+                    // setMovies((prev) => [...prev, ...data.results]);
+                    setMovies(data.results);
                     setTotalPages(data.total_pages);
                     setLoading(false); 
-                    const random = Math.floor(Math.random() * (19 - 0 + 1) + 0);
-                    setBanner(data.results[random]); 
+                    if (!banner) {
+                        const random = Math.floor(Math.random() * (19 - 0 + 1) + 0);
+                        setBanner(data.results[random]); 
+                    }
                 })
                 .catch((err) => { 
                 })
             }
 
-            apiSeeAll = "";
-            if (type === "trending") {
-                apiSeeAll = `https://api.themoviedb.org/3/${type}/${media_type}/week?api_key=${process.env.REACT_APP_API_KEY}&page=${page + 1}`
-            }
-            else {                
-                apiSeeAll = `https://api.themoviedb.org/3/${media_type}/${type}?api_key=${process.env.REACT_APP_API_KEY}&page=${page + 1}`
-            }
-            if (apiSeeAll) {
-                fetch(`${apiSeeAll}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    setMovies((prev) => [...prev, ...data.results]);
-                    setTotalPages(data.total_pages);
-                    setLoading(false);   
-                })
-                .catch((err) => {
-                    setLoading(false);
-                })
-            }
+            // apiSeeAll = "";
+            // if (type === "trending") {
+            //     apiSeeAll = `https://api.themoviedb.org/3/${type}/${media_type}/week?api_key=${process.env.REACT_APP_API_KEY}&page=${page + 1}`
+            // }
+            // else {                
+            //     apiSeeAll = `https://api.themoviedb.org/3/${media_type}/${type}?api_key=${process.env.REACT_APP_API_KEY}&page=${page + 1}`
+            // }
+            // if (apiSeeAll) {
+            //     fetch(`${apiSeeAll}`)
+            //     .then((res) => res.json())
+            //     .then((data) => {
+            //         setMovies((prev) => [...prev, ...data.results]);
+            //         setTotalPages(data.total_pages);
+            //         setLoading(false);   
+            //     })
+            //     .catch((err) => {
+            //         setLoading(false);
+            //     })
+            // }
         },
         [page]
     );  
 
+    const prevPage = () => {
+        setPage(page - 1);
+    }
+
     const nextPage = () => {
-        setPage(page + 2);
+        setPage(page + 1);
+    }
+
+    const goToPage = (desPage) => {
+        setPage(desPage);
     }
 
     useEffect(() => {
@@ -84,6 +97,7 @@ export const SeeAll = () => {
     useEffect(() => {
         setLoading(true);
         getSeeAll(media_type, type);
+        scrollTop();
          
     }, [media_type, type, page, getSeeAll]);
 
@@ -114,7 +128,29 @@ export const SeeAll = () => {
                     <span className={`slider-head-title trending`}>{type} movies</span>  
                 </div> */}
                 
+                <div className='see-all-pages'>
+                    {page - 1 > 0 && 
+                        <ArrowBackIosNewRoundedIcon onClick={prevPage} className='page-icon'/>
+                    }
+                    {page - 1 > 0 ? (
+                        <>
+                            <span onClick={e => goToPage(page - 1)}>{page - 1}</span>
+                            <span className='current'>{page}</span>
+                            <span onClick={e => goToPage(page + 1)}>{page + 1}</span>
+                        </>
+                    ) : (
+                        <>
+                            <span className='current'>{page}</span>
+                            <span onClick={e => goToPage(page + 1)}>{page + 1}</span>
+                            <span onClick={e => goToPage(page + 2)}>{page + 2 }</span>
+                        </>
+                    )}
+                    {page + 1 <= Math.round(totalPages/2) && 
+                        <ArrowForwardIosRoundedIcon onClick={nextPage} className='page-icon'/>
+                    }
+                </div>
                 <div className='see-all_movies'>
+                    
                     {!loading ? (  
                         movies.map((item) => (
                             <Link key={item.id} id={item.id} to={`/${media_type}/detail/${item.id}`}>
@@ -146,7 +182,29 @@ export const SeeAll = () => {
                             <Skeleton />
                         </>
                     )}
-                </div> 
+                </div>  
+                
+                <div className='see-all-pages'>
+                    {page - 1 > 0 && 
+                        <ArrowBackIosNewRoundedIcon onClick={prevPage} className='page-icon'/>
+                    }
+                    {page - 1 > 0 ? (
+                        <>
+                            <span onClick={e => goToPage(page - 1)}>{page - 1}</span>
+                            <span className='current'>{page}</span>
+                            <span onClick={e => goToPage(page + 1)}>{page + 1}</span>
+                        </>
+                    ) : (
+                        <>
+                            <span className='current'>{page}</span>
+                            <span onClick={e => goToPage(page + 1)}>{page + 1}</span>
+                            <span onClick={e => goToPage(page + 2)}>{page + 2 }</span>
+                        </>
+                    )}
+                    {page + 1 <= Math.round(totalPages/2) && 
+                        <ArrowForwardIosRoundedIcon onClick={nextPage} className='page-icon'/>
+                    }
+                </div>
             </div> 
         </div>
     );
