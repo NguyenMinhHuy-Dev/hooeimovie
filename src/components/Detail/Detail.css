@@ -1,5 +1,37 @@
 .container-detail {
     width: 100%;
     min-height: 100vmin;
-    position: relative;
+    /* position: relative; */
+}
+
+.container-detail .banner-content {
+
+    /* bottom: 10px; */
+    /* left: 10px; */
+}
+
+.container-detail .banner-info-tag {
+    margin-top: 20px;
+}
+
+.button-stats {
+    position: absolute;
+    top: 100px;
+    z-index: 90;
+}
+
+.button-state { 
+    letter-spacing: 2px;
+    user-select: none; 
+    background: linear-gradient(135deg, #06182b83, #06182b5b); 
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 50px;
+}
+
+.button-state.active {
+    background: linear-gradient(135deg, #3498dba2, #1d5981a9); 
 }

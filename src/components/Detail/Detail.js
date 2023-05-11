@@ -4,36 +4,93 @@ import { Title } from "../Title/Title";
 import './Detail.css';
 import { useEffect, useState } from "react";
 import { Loading } from "../Loading/Loading";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import KeyboardDoubleArrowRightTwoToneIcon from '@mui/icons-material/KeyboardDoubleArrowRightTwoTone';
+import { Trailer } from "../Trailer/Trailer";
 
 export const Detail = () => { 
     const { media_type, id } = useParams();
 
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(false);
+    const [isTrailer, setIsTrailer] = useState(false);
+ 
+    const scrollTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
 
+    useEffect(() => {
+        scrollTop();
+    },[])
     useEffect(() => {
         const getDetailMovie = async (media_type, id) => {
             await fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}`)
             .then((res) => res.json())
-            .then((details) => {
-                console.log(details)
+            .then((details) => { 
                 setData(details);
-                setLoading(false);
+                setLoading(false); 
             })
             .catch((err) => {
                 setLoading(false);
             });
-        };
+        };  
 
         setLoading(true);
-        getDetailMovie(media_type, id);
+        getDetailMovie(media_type, id); 
     }, [id, media_type])
 
     return (
-        <div className="container container-detail">
-            <Title title={`${data.name || data.title}`}/>
-            {/* <Banner /> */}
-            <Loading />
+        <div className="container container-detail"> 
+            <div className={`banner ${loading ? 'skeleton' : ''}`} style={{
+                backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
+            }}>
+                <Title title={`${data.title || data.name || 'Name'} | ${data.original_title || data.original_name || 'Original Name'}`}/> 
+
+                <div className="button-stats">
+                    <span className={`button-state ${isTrailer ? '' : 'active'}`}>POSTER</span> 
+                    <span 
+                        className={`button-state ${!isTrailer ? '' : 'active'}`}
+                        onClick={e => setIsTrailer(isTrailer => !isTrailer)}
+                    >TRAILER</span> 
+                </div>
+
+                {isTrailer ? (
+                    <Trailer isTrailer setIsTrailer={setIsTrailer}/>
+                ) : (
+                    
+                
+                    <div className='banner-content'>
+                        <div className='banner-poster'>
+                            <img className={`${loading && 'skeleton'}`} src={`https://image.tmdb.org/t/p/original${data?.poster_path}`}/>
+                        </div>
+                        
+                        <div className='banner-info'> 
+                            <span className='banner-info-title'>{data?.title || data?.name}</span>
+                            <span className='banner-info-original-title'>{data?.original_title || data?.original_name}</span> 
+                            <div className='banner-info-tag'>
+                                <span className='banner-info-tag-type'>{media_type}</span> 
+                                <span className='banner-info-tag-rating'>Voting: {data?.vote_average}/10</span> 
+                            </div>
+                            <div className='banner-info-tag'>
+                                {data.genres &&
+                                    data.genres.map((item) => ( 
+                                        <span key={item.id} className='banner-info-tag-genre'>{item.name}</span>  
+                                ))}
+                            </div>
+                            <p className='banner-info-overview'>{data?.overview}</p>   
+                            <p className='banner-info-overview'>Release date: {data?.release_date}</p>  
+                            <div className='banner-info-button'>
+                                <span className='button banner-info-watch'>
+                                    Watch now
+                                </span>
+                            </div>
+                        </div>
+                    </div> 
+                )}
+            </div>
         </div>
     );
 }

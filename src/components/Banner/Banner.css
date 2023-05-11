@@ -102,6 +102,14 @@
     box-shadow: rgb(18, 23, 28) 0px 20px 30px -10px;
 }
 
+.banner-info-tag-genre { 
+    letter-spacing: 2px;
+    user-select: none; 
+    background: linear-gradient(135deg, #06182b83, #06182b5b); 
+    color: #fff;
+    border: 1px solid #fff;
+}
+
 .banner-info-tag-type {
     color: #000;
     letter-spacing: 2px;
@@ -142,6 +150,14 @@
 .banner-info-overview {
     margin-top: 30px;
     font-size: 20px;
+    font-weight: 300;
+    color: rgb(215, 215, 215);
+    text-align: justify;
+    user-select: none;
+}
+
+.banner-info-tagline { 
+    font-size: 18px;
     font-weight: 300;
     color: rgb(215, 215, 215);
     text-align: justify;

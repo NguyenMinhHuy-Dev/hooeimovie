@@ -13,6 +13,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './config/firebase';
 import { SeeAll } from './components/SeeAll/SeeAll';
 import { Detail } from './components/Detail/Detail';
+import { ScrollButton } from './components/ScrollButton/ScrollButton';
 
 function App() {
   
@@ -42,13 +43,14 @@ function App() {
     {signin && <SignIn />} 
     <div className="App">
         <Header />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/search' element={<Search />} />
-            <Route path='/:media_type/:type' element={<SeeAll />} />
-            <Route path='/discover' element={<SeeAll />} />
-            <Route path='/:media_type/detail/:id' element={<Detail />} />
-          </Routes>
+        <ScrollButton />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/search' element={<Search />} />
+          <Route path='/:media_type/:type' element={<SeeAll />} />
+          <Route path='/discover' element={<SeeAll />} />
+          <Route path='/:media_type/detail/:id' element={<Detail />} />
+        </Routes>
         <Footer />
     </div>
     </>

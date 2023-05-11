@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardDoubleArrowRightTwoToneIcon from '@mui/icons-material/KeyboardDoubleArrowRightTwoTone';
 import './Banner.css'
+import { Link } from 'react-router-dom';
 
 export const Banner = () => {
     const [banner, setBanner] = useState(null);
@@ -46,14 +47,16 @@ export const Banner = () => {
                         <span className='banner-info-tag-type'>{banner?.media_type}</span>
                         <span className='banner-info-tag-trend'>Trending</span>
                         <span className='banner-info-tag-rating'>Voting: {banner?.vote_average}/10</span>
-                        <span className='banner-info-tag-continue'><MoreHorizIcon className='   '/></span>
+                        {/* <span className='banner-info-tag-continue'><MoreHorizIcon className='   '/></span> */}
                     </div>
                     <p className='banner-info-overview'>{banner?.overview}</p> 
                     <div className='banner-info-button'>
                         <span className='button banner-info-watch'>
                             Watch now
                         </span>
-                        <span className='button banner-info-detail'>See detail <KeyboardDoubleArrowRightTwoToneIcon className='arrow'/></span>
+                        <Link to={`/${banner?.media_type}/detail/${banner?.id}`}>
+                            <span className='button banner-info-detail'>See detail <KeyboardDoubleArrowRightTwoToneIcon className='arrow'/></span>
+                        </Link>
                     </div>
                 </div>
             </div>

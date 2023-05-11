@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Movie } from "../Movie/Movie";
+import { Link } from "react-router-dom";
 
 export const SlideTV = ({ type }) => {
     const [movies, setMovies] = useState([]);
@@ -47,7 +48,9 @@ export const SlideTV = ({ type }) => {
                     {!loading && movies.map((item) => {
                         return (
                             <SwiperSlide key={item.id}>
-                                <Movie data={item}/>
+                                <Link to={`/tv/detail/${item.id}`}>
+                                    <Movie data={item}/>
+                                </Link> 
                             </SwiperSlide> 
                         );
                     })} 

@@ -39,10 +39,12 @@ export const TVSection = ({ type }) => {
                     // <span className="slider-head-more">See all <KeyboardArrowRightTwoToneIcon className="seeall"/></span>
                 }
             </div>
-            <div className='slider-extend'>
+            <div className='slider-extend see-all_movies'>
                 {!loading && movies.map((item) => {
                     return (
-                        <Movie key={item.id} data={item}/>
+                        <Link key={item.id} to={`/tv/detail/${item.id}`}>
+                            <Movie key={item.id} data={item}/>
+                        </Link>
                     );
                 })} 
             </div>

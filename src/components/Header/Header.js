@@ -39,7 +39,7 @@ export const Header = () => {
     }
 
     return (
-        <div ref={headerRef} className='header'>
+        <div ref={headerRef} id='header' className='header'>
             <div className='nav'>
                 <Link to="/" className='brand'>
                     <span className='brand-name'>Hooei's M<LiveTvTwoToneIcon className='logo'/>vie</span>

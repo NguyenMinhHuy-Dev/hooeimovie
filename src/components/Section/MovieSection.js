@@ -41,10 +41,12 @@ export const MovieSection = ({ type }) => {
                     // </Link>
                 }
             </div>
-            <div className='slider-extend'>
+            <div className='slider-extend see-all_movies'>
                 {!loading && movies.map((item) => {
                     return (
-                        <Movie key={item.id} data={item}/>
+                        <Link key={item.id} to={`/movie/detail/${item.id}`}>
+                            <Movie data={item}/>
+                        </Link>
                     );
                 })} 
             </div>
