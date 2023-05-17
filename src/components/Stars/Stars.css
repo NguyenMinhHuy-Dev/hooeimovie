@@ -1,0 +1,13 @@
+.stars {
+    width: 100%;
+    /* height: 20px; */
+    margin-top: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center; 
+}
+
+.stars .star-icon {
+    font-size: 50px;
+    color: #f1c40f;
+}

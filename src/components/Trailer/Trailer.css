@@ -1,8 +1,8 @@
 .trailer-content {
-    position: fixed;
+    position: relative;
     width: 100%;
-    height: 100%;
-    z-index: 9999;
+    min-height: 100vh;
+    z-index: 2;
     background-color: rgb(0, 0, 0);
     overflow: hidden;
     display: flex;
@@ -14,8 +14,8 @@
 .trailer-quit { 
     width: 100vw;
     height: 60px;
-    position: fixed;
-    z-index: 9999;
+    position: absolute;
+    z-index: 2;
     top: 0;
     /* right: 20px; */
     display: flex;
