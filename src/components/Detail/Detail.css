@@ -36,3 +36,39 @@
     background: linear-gradient(135deg, #3498dba2, #1d5981a9); 
 }
  
+.detail-seasons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 0 30px; 
+    overflow-x: auto;
+}
+
+.detail-seasons .banner-info-tag-genre {
+    min-width: 200px;
+    text-align: center;
+    margin: 0 5px;
+    font-size: 15px;
+    color: #fff;
+    overflow: hidden;
+    border-radius: 50px;
+    padding: 10px 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: 0.2s linear;
+    background: none;
+}
+
+.detail-seasons .banner-info-tag-genre.current {
+    background: #fff;
+    color: #000;
+    transition: 0.1s linear;
+}
+
+.detail-seasons .banner-info-tag-genre:hover {
+    background: #fff;
+    color: #000;
+    transition: 0.1s linear;
+}

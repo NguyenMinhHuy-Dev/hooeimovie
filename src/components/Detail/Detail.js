@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Banner } from "../Banner/Banner";
 import { Title } from "../Title/Title";
 import './Detail.css';
@@ -46,7 +46,7 @@ export const Detail = () => {
     return (
         <div className="container container-detail"> 
         
-            {/* <Trailer />  */}
+            <Trailer /> 
             <div className={`banner ${loading ? 'skeleton' : ''}`} style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
             }}>
@@ -60,15 +60,16 @@ export const Detail = () => {
                     <div className='banner-info'> 
                         <span className='banner-info-title'>{data?.title || data?.name}</span>
                         <span className='banner-info-original-title'>{data?.original_title || data?.original_name}</span> 
-                        <div className='banner-info-tag'>
+                        {/* <div className='banner-info-tag'>
                             <span className='banner-info-tag-type'>{media_type}</span> 
-                            {/* {data?.runtime ? (
+                            {data?.runtime ? (
                                 <span className='banner-info-tag-rating'>{data?.runtime} minutes</span> 
                             ) : (
                                 <span className='banner-info-tag-rating'>{data?.episode_run_time} minutes / episode</span> 
-                            )} */}
-                        </div>
+                            )}
+                        </div> */}
                         <div className='banner-info-tag'>
+                            <span className='banner-info-tag-type'>{media_type}</span> 
                             {data.genres &&
                                 data.genres.map((item) => ( 
                                     <span key={item.id} className='banner-info-tag-genre'>{item.name}</span>  
@@ -86,6 +87,24 @@ export const Detail = () => {
                             <span className='banner-info-overview'>Runtime: {data?.episode_run_time} minutes / episode</span> 
                         )}
                         <Stars rating={data?.vote_average}/>
+                        {/* <div className="detail-seasons">
+                            {data?.seasons?.map((item) => {
+                                if (data.last_episode_to_air.season_number === item.season_number) {
+                                    return (
+                                        <Link  key={item.id} to={`/${media_type}/detail/${data.last_episode_to_air.show_id}`}>
+                                            <span className='banner-info-tag-genre current'>Season {item.season_number}: {item.name}</span>  
+                                        </Link>
+                                    );
+                                }
+                                else {
+                                    return (
+                                        <Link key={item.id} to={`/${media_type}/detail/${item.id}`}>
+                                            <span className='banner-info-tag-genre'>Season {item.season_number}: {item.name}</span> 
+                                        </Link>
+                                    );
+                                }
+                            })}
+                        </div> */}
                         <div className='banner-info-button'>
                             <span className='button banner-info-watch'>
                                 Watch now

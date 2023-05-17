@@ -36,6 +36,7 @@
 .brand .logo {
     color: #82C3EC;
     font-size: 40px;
+    text-shadow: 5px 5px 5px #000000;
 }
 
 .brand-name {
@@ -44,6 +45,7 @@
     display: flex;
     font-size: 26px;
     align-items: center;
+    text-shadow: 5px 5px 5px #000000;
 }
 
 .search {
@@ -230,6 +232,7 @@
     border: 2px solid transparent;
     transition: 0.3s; 
     position: relative;
+    text-shadow: 0 0 7px #000000b6;
 }
 
 .header-list-item-link {
@@ -237,7 +240,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
 }
 
 .header-list-item:hover {
