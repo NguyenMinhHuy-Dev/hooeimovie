@@ -6,30 +6,32 @@ import { Link } from 'react-router-dom';
 
 export const Banner = () => {
     const [banner, setBanner] = useState(null);
-
-    useEffect(() => {
+ 
+    const getBanner = async () => {
         const i = Math.random() < 0.5 ? 0 : 1;
+        if (i === 0) { 
+            await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`)
+            .then((res) => res.json())
+            .then((data) => {
+                const random = Math.floor(Math.random() * (19 - 0 + 1) + 0);
+                setBanner(data.results[random]); 
+            })
+            .catch((err) => console.log(err));  
+        }
+        else {
+            await fetch(`https://api.themoviedb.org/3/trending/tv/week?api_key=${process.env.REACT_APP_API_KEY}`)
+            .then((res) => res.json())
+            .then((data) => {
+                const random = Math.floor(Math.random() * (19 - 0 + 1) + 0);
+                setBanner(data.results[random]); 
+            })
+            .catch((err) => console.log(err));  
+        }
 
-        const getBanner = async () => {
-            if (i === 0) { 
-                await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    const random = Math.floor(Math.random() * (19 - 0 + 1) + 0);
-                    setBanner(data.results[random]); 
-                })
-                .catch((err) => console.log(err));  
-            }
-            else {
-                await fetch(`https://api.themoviedb.org/3/trending/tv/week?api_key=${process.env.REACT_APP_API_KEY}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    const random = Math.floor(Math.random() * (19 - 0 + 1) + 0);
-                    setBanner(data.results[random]); 
-                })
-                .catch((err) => console.log(err));  
-            }
-        };
+        setTimeout(getBanner, 30000);
+    };
+
+    useEffect(() => { 
         getBanner(); 
     }, []);
     return (

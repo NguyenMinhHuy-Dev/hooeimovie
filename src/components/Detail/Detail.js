@@ -46,7 +46,7 @@ export const Detail = () => {
     return (
         <div className="container container-detail"> 
         
-            <Trailer /> 
+            {/* <Trailer />  */}
             <div className={`banner ${loading ? 'skeleton' : ''}`} style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
             }}>
@@ -62,7 +62,11 @@ export const Detail = () => {
                         <span className='banner-info-original-title'>{data?.original_title || data?.original_name}</span> 
                         <div className='banner-info-tag'>
                             <span className='banner-info-tag-type'>{media_type}</span> 
-                            {/* <span className='banner-info-tag-rating'>Voting: {data?.vote_average}/10</span>  */}
+                            {/* {data?.runtime ? (
+                                <span className='banner-info-tag-rating'>{data?.runtime} minutes</span> 
+                            ) : (
+                                <span className='banner-info-tag-rating'>{data?.episode_run_time} minutes / episode</span> 
+                            )} */}
                         </div>
                         <div className='banner-info-tag'>
                             {data.genres &&
@@ -75,6 +79,11 @@ export const Detail = () => {
                             <p className='banner-info-overview'>Release date: {data?.release_date}</p>   
                         ) : (
                             <p className='banner-info-overview'>Last air date: {data?.last_air_date}</p>  
+                        )}
+                        {data?.runtime ? (
+                            <span className='banner-info-overview'>Runtime: {data?.runtime} minutes</span> 
+                        ) : (
+                            <span className='banner-info-overview'>Runtime: {data?.episode_run_time} minutes / episode</span> 
                         )}
                         <Stars rating={data?.vote_average}/>
                         <div className='banner-info-button'>
