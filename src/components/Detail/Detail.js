@@ -32,6 +32,7 @@ export const Detail = () => {
             .then((details) => { 
                 setData(details);
                 setLoading(false); 
+                console.log(details);
             })
             .catch((err) => {
                 setLoading(false);
@@ -45,7 +46,7 @@ export const Detail = () => {
     return (
         <div className="container container-detail"> 
         
-            {/* <Trailer />  */}
+            <Trailer /> 
             <div className={`banner ${loading ? 'skeleton' : ''}`} style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
             }}>
@@ -70,7 +71,11 @@ export const Detail = () => {
                             ))}
                         </div>
                         <p className='banner-info-overview'>{data?.overview}</p>   
-                        <p className='banner-info-overview'>Release date: {data?.release_date}</p>  
+                        {data?.release_date ? (
+                            <p className='banner-info-overview'>Release date: {data?.release_date}</p>   
+                        ) : (
+                            <p className='banner-info-overview'>Last air date: {data?.last_air_date}</p>  
+                        )}
                         <Stars rating={data?.vote_average}/>
                         <div className='banner-info-button'>
                             <span className='button banner-info-watch'>

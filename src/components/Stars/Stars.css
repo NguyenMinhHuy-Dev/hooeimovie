@@ -4,10 +4,16 @@
     margin-top: 20px;
     display: flex;
     justify-content: left;
-    align-items: center; 
+    align-items: center;  
 }
 
 .stars .star-icon {
-    font-size: 50px;
-    color: #f1c40f;
+    font-size: 40px;
+    color: #f1c40f; 
+}
+
+.stars span {
+    color: #fff;
+    letter-spacing: 2px;
+    margin-left: 5px;
 }
