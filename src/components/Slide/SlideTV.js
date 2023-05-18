@@ -35,7 +35,7 @@ export const SlideTV = ({ type }) => {
     return (
         <div className="slider">
             <div className="slider-head">
-                <span className={`slider-head-title ${type}`}>{type} TV</span>
+                <span className={`slider-head-title ${type}`}>{type} TV SERIES</span>
                 {type !== "trending" && <span className="slider-head-more">See all <KeyboardArrowRightTwoToneIcon className="seeall"/></span>}
             </div>
             <Swiper 

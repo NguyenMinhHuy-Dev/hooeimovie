@@ -31,7 +31,7 @@ export const TVSection = ({ type }) => {
     return (
         <div className="slider">
             <div className="slider-head">
-                <span className={`slider-head-title ${type}`}>{type === "top_rated" ? "Top rated" : type} TV</span>
+                <span className={`slider-head-title ${type}`}>{type === "top_rated" ? "Top rated" : type} TV SERIES</span>
                 {type !== "trending" && 
                     <Link to={`/tv/${type}`}>
                         <span className="slider-head-more">See all <KeyboardArrowRightTwoToneIcon className="seeall"/></span>

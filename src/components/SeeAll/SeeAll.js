@@ -120,7 +120,7 @@ export const SeeAll = () => {
                     backgroundImage: `url(https://image.tmdb.org/t/p/original${banner?.backdrop_path})`,
                 }}>
                     <div className='see-all-title'>
-                        <span className={`slider-head-title trending`}>{type} {media_type}</span>  
+                        <span className={`slider-head-title trending`}>{type} {media_type === 'tv' ? 'TV SERIES' : media_type}</span>  
                         <span className='page-number'>Page {page}</span>
                     </div>
                 </div>

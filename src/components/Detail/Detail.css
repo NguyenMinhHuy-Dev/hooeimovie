@@ -5,12 +5,14 @@
 }
 
 .container-detail .banner-content {
-
-    /* bottom: 10px; */
-    /* left: 10px; */
+    width: 75%;
 }
 
-.container-detail .banner-info-tag {
+/* .banner-content .banner-info-button{
+    margin: 5px 0 0;
+} */
+
+.banner-info-tag {
     margin-top: 20px;
 }
 
@@ -38,17 +40,21 @@
  
 .detail-seasons {
     width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 10px 0 30px; 
-    overflow-x: auto;
+    height: 120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    /* padding: 15px 10px;  */
+    overflow-x: hidden;
+    overflow-y: auto; 
 }
 
 .detail-seasons .banner-info-tag-genre {
-    min-width: 200px;
+    display: block;
+    min-width: 150px;
     text-align: center;
-    margin: 0 5px;
-    font-size: 15px;
+    margin: 10px 5px;
+    font-size: 14px;
     color: #fff;
     overflow: hidden;
     border-radius: 50px;
@@ -58,7 +64,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     transition: 0.2s linear;
-    background: none;
+    background: none; 
 }
 
 .detail-seasons .banner-info-tag-genre.current {
@@ -71,4 +77,23 @@
     background: #fff;
     color: #000;
     transition: 0.1s linear;
+}
+
+/* .series { 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+} */
+
+.container-detail .see-all_movies {
+    min-height: 0;
+}
+
+.container-detail .slider-head {
+    justify-content: center;
+}
+
+.container-detail .slider-head span {
+    font-size: 40px;
+    letter-spacing: 10px;
 }

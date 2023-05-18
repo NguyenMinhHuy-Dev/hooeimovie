@@ -3,6 +3,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardDoubleArrowRightTwoToneIcon from '@mui/icons-material/KeyboardDoubleArrowRightTwoTone';
 import './Banner.css'
 import { Link } from 'react-router-dom';
+import { Skeleton } from '../Skeleton/Skeleton';
 
 export const Banner = () => {
     const [banner, setBanner] = useState(null);
@@ -40,7 +41,11 @@ export const Banner = () => {
         }}> 
             <div className='banner-content'>
                 <div className='banner-poster'>
-                    <img src={`https://image.tmdb.org/t/p/original${banner?.poster_path}`}/>
+                    {banner?.poster_path ? (
+                        <img src={`https://image.tmdb.org/t/p/original${banner?.poster_path}`}/>
+                    ) : (
+                        <Skeleton />
+                    )}
                 </div>
                 <div className='banner-info'> 
                     <span className='banner-info-title'>{banner?.title || banner?.name}</span>

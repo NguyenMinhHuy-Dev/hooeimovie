@@ -8,6 +8,9 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardDoubleArrowRightTwoToneIcon from '@mui/icons-material/KeyboardDoubleArrowRightTwoTone';
 import { Trailer } from "../Trailer/Trailer";
 import { Stars } from "../Stars/Stars";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from 'swiper';
+import { Movie } from "../Movie/Movie";
 
 export const Detail = () => { 
     const { media_type, id } = useParams();
@@ -43,9 +46,8 @@ export const Detail = () => {
         getDetailMovie(media_type, id); 
     }, [id, media_type])
 
-    return (
-        <div className="container container-detail"> 
-        
+    return ( 
+        <div className="container-detail">
             <Trailer /> 
             <div className={`banner ${loading ? 'skeleton' : ''}`} style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
@@ -60,14 +62,7 @@ export const Detail = () => {
                     <div className='banner-info'> 
                         <span className='banner-info-title'>{data?.title || data?.name}</span>
                         <span className='banner-info-original-title'>{data?.original_title || data?.original_name}</span> 
-                        {/* <div className='banner-info-tag'>
-                            <span className='banner-info-tag-type'>{media_type}</span> 
-                            {data?.runtime ? (
-                                <span className='banner-info-tag-rating'>{data?.runtime} minutes</span> 
-                            ) : (
-                                <span className='banner-info-tag-rating'>{data?.episode_run_time} minutes / episode</span> 
-                            )}
-                        </div> */}
+
                         <div className='banner-info-tag'>
                             <span className='banner-info-tag-type'>{media_type}</span> 
                             {data.genres &&
@@ -86,32 +81,45 @@ export const Detail = () => {
                         ) : (
                             <span className='banner-info-overview'>Runtime: {data?.episode_run_time} minutes / episode</span> 
                         )}
-                        <Stars rating={data?.vote_average}/>
-                        {/* <div className="detail-seasons">
-                            {data?.seasons?.map((item) => {
-                                if (data.last_episode_to_air.season_number === item.season_number) {
-                                    return (
-                                        <Link  key={item.id} to={`/${media_type}/detail/${data.last_episode_to_air.show_id}`}>
-                                            <span className='banner-info-tag-genre current'>Season {item.season_number}: {item.name}</span>  
-                                        </Link>
-                                    );
-                                }
-                                else {
-                                    return (
-                                        <Link key={item.id} to={`/${media_type}/detail/${item.id}`}>
-                                            <span className='banner-info-tag-genre'>Season {item.season_number}: {item.name}</span> 
-                                        </Link>
-                                    );
-                                }
-                            })}
-                        </div> */}
+                        <Stars rating={data?.vote_average}/> 
                         <div className='banner-info-button'>
                             <span className='button banner-info-watch'>
-                                Watch now
+                                Favourite
+                            </span>
+                            <span className='button banner-info-watch'>
+                                Watch later
                             </span>
                         </div>
                     </div>
                 </div> 
+            </div> 
+
+            <div className="container">
+                <div className="slider-head">
+                    <span className={`slider-head-title trending`}>.SEASONS.</span>
+                </div>
+                <div className="slider-extend see-all_movies"> 
+                    {data?.seasons?.map((item) => {
+                        return (
+                            <Link to={`/tv/detail/${item.id}`}>
+                                <Movie data={item}/>
+                            </Link> 
+                        );
+                    })}
+                </div>
+                {/* <Swiper  
+                    spaceBetween={10} 
+                    slidesPerView={6}>
+                        {!loading && data?.seasons?.map((item) => {
+                            return (
+                                <SwiperSlide key={item.id}>
+                                    <Link to={`/tv/detail/${item.id}`}>
+                                        <Movie data={item}/>
+                                    </Link> 
+                                </SwiperSlide> 
+                            );
+                        })} 
+                </Swiper> */}
             </div>
         </div>
     );
