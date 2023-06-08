@@ -29,13 +29,14 @@ export const Trailer = () => {
                 <div className="trailer-content">   
                     <iframe
                         style={{
-                            minHeight: "100vh",
-                            // pointerEvents: "none",
+                            height: "calc(100vh - 70px)",
+                            pointerEvents: "none",
                             userSelect: "none",
                         }}
                         width="100%"  
-                        src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=0&loop=1&color=white&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0&controls=0&enablejsapi=1&showinfo=0&playlist=${trailer.key}`}
+                        src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&loop=1&color=white&rel=0&controls=0&playlist=${trailer.key}`}
                         title="YouTube video player"
+                        referrerpolicy="no-referrer-when-downgrade"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowFullScreen
