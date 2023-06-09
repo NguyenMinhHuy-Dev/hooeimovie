@@ -97,3 +97,46 @@
     font-size: 40px;
     letter-spacing: 10px;
 }
+
+.container-detail .container {
+    margin-bottom: 50px;
+}
+
+.banner-info .banner-info-button {
+    display: flex;
+    align-items: center;
+} 
+
+/* .banner-info-button .banner-info-watch.favourite {
+    background-color: #ffffff00;
+    box-shadow: none;
+} */
+
+.banner-info-button .banner-info-watch.favourite .icon {
+    /* font-size: 40px; */
+    /* color: #fff; */
+}
+
+.banner-info-button .banner-info-watch.favourite .icon.red {
+    color: #e74c3c;
+}
+
+.banner-info-button .banner-info-watch.add .icon.green {
+    color: #10ac84;
+}
+
+.banner-info-button .banner-info-watch.favourite:hover .icon{
+    color: #82C3EC;
+}
+
+.container-detail .banner-info-watch {
+    position: relative;
+}
+
+.subTitle {
+    position: absolute;
+    z-index: 99;
+    top: 100%;
+    left: -50%;
+    background-color: #131736;
+}

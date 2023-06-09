@@ -11,12 +11,22 @@ import { Stars } from "../Stars/Stars";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from 'swiper';
 import { Movie } from "../Movie/Movie";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import { useStore } from "../../stored";
 
 export const Detail = () => { 
     const { media_type, id } = useParams();
 
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(false); 
+
+    const [isFavourite, setIsFavourite] = useState(null);
+    const [isAddList, setIsAddList] = useState(null);
+ 
+    const { user } = useStore((state) => state);
  
     const scrollTop = () => {
         window.scrollTo({
@@ -28,6 +38,7 @@ export const Detail = () => {
     useEffect(() => {
         scrollTop();
     },[])
+
     useEffect(() => {
         const getDetailMovie = async (media_type, id) => {
             await fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}`)
@@ -48,7 +59,7 @@ export const Detail = () => {
 
     return ( 
         <div className="container-detail">
-            <Trailer /> 
+            {/* <Trailer />  */}
             <div className={`banner ${loading ? 'skeleton' : ''}`} style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
             }}>
@@ -83,30 +94,58 @@ export const Detail = () => {
                         )}
                         <Stars rating={data?.vote_average}/> 
                         <div className='banner-info-button'>
-                            <span className='button banner-info-watch'>
-                                Favourite
-                            </span>
-                            <span className='button banner-info-watch'>
-                                Watch later
-                            </span>
+                            {media_type === "movie" && 
+                                <span className='button banner-info-watch'>
+                                    Watch now
+                                </span>
+                            }   
+                            {user && 
+                                <>
+                                
+                                    <span 
+                                        className='button banner-info-watch favourite'
+                                        onClick={(e) => setIsFavourite(isFavourite => !isFavourite)}    
+                                    >
+                                        {isFavourite ? (
+                                            <FavoriteIcon className="icon red" />
+                                        ) : (
+                                            <FavoriteBorderIcon className="icon"/> 
+                                        )} 
+                                    </span>
+                                    <span 
+                                        className='button banner-info-watch add'
+                                        onClick={(e) => setIsAddList(isAddList => !isAddList)}    
+                                    >
+                                        {isAddList ? (
+                                            <PlaylistAddCheckIcon className="icon green" />
+                                        ) : (
+                                            <PlaylistAddIcon className="icon"/>
+                                        )}
+                                    </span>
+                                </>
+                            }
                         </div>
                     </div>
                 </div> 
             </div> 
 
-            <div className="container">
-                <div className="slider-head">
-                    <span className={`slider-head-title trending`}>.SEASONS.</span>
-                </div>
-                <div className="slider-extend see-all_movies"> 
-                    {data?.seasons?.map((item) => {
-                        return (
-                            <Link to={`/tv/detail/${item.id}`}>
-                                <Movie data={item}/>
-                            </Link> 
-                        );
-                    })}
-                </div>
+            <div className="container"> 
+                {media_type === "tv" && (
+                    <>
+                        <div className="slider-head">
+                            <span className={`slider-head-title trending`}>.SEASONS.</span>
+                        </div>
+                        <div className="slider slider-extend see-all_movies"> 
+                            {data?.seasons?.map((item) => {
+                                return (
+                                    <Link key={item.id} to={`/tv/detail/${item.id}`}>
+                                        <Movie data={item}/>
+                                    </Link> 
+                                );
+                            })}
+                        </div>
+                    </>
+                )}
                 {/* <Swiper  
                     spaceBetween={10} 
                     slidesPerView={6}>
