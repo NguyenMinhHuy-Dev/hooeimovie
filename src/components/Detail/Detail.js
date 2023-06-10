@@ -12,6 +12,7 @@ import { Cast } from "./Cast/Cast";
 import './Detail.css';
 import { Similar } from "./Similar/Similar";
 import { Reviews } from './Reviews/Reviews';
+import { Trailer } from '../Trailer/Trailer';
 
 export const Detail = () => { 
     const { media_type, id } = useParams();
@@ -54,7 +55,7 @@ export const Detail = () => {
 
     return ( 
         <div className="container-detail">
-            {/* <Trailer />  */}
+            <Trailer /> 
             <div className={`banner ${loading ? 'skeleton' : ''}`} style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
             }}>
