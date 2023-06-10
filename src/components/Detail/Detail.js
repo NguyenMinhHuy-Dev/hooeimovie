@@ -16,6 +16,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import { useStore } from "../../stored";
+import { Cast } from "./Cast/Cast";
 
 export const Detail = () => { 
     const { media_type, id } = useParams();
@@ -85,13 +86,26 @@ export const Detail = () => {
                         {data?.release_date ? (
                             <p className='banner-info-overview'>Release date: {data?.release_date}</p>   
                         ) : (
-                            <p className='banner-info-overview'>Last air date: {data?.last_air_date}</p>  
+                            <p className='banner-info-overview'>Last air date: {data?.last_air_date}</p>    
                         )}
                         {data?.runtime ? (
                             <span className='banner-info-overview'>Runtime: {data?.runtime} minutes</span> 
                         ) : (
                             <span className='banner-info-overview'>Runtime: {data?.episode_run_time} minutes / episode</span> 
                         )}
+
+                        <p className='banner-info-overview'>Companies: {   
+                                data.production_companies &&
+                                data.production_companies.map(item => item.name).join(', ')
+                            }
+                        </p> 
+
+                        <p className='banner-info-overview'>Countries: {   
+                                data.production_countries &&
+                                data.production_countries.map(item => item.name).join(', ')
+                            }
+                        </p> 
+
                         <Stars rating={data?.vote_average}/> 
                         <div className='banner-info-button'>
                             {media_type === "movie" && 
@@ -100,8 +114,7 @@ export const Detail = () => {
                                 </span>
                             }   
                             {user && 
-                                <>
-                                
+                                <> 
                                     <span 
                                         className='button banner-info-watch favourite'
                                         onClick={(e) => setIsFavourite(isFavourite => !isFavourite)}    
@@ -146,19 +159,7 @@ export const Detail = () => {
                         </div>
                     </>
                 )}
-                {/* <Swiper  
-                    spaceBetween={10} 
-                    slidesPerView={6}>
-                        {!loading && data?.seasons?.map((item) => {
-                            return (
-                                <SwiperSlide key={item.id}>
-                                    <Link to={`/tv/detail/${item.id}`}>
-                                        <Movie data={item}/>
-                                    </Link> 
-                                </SwiperSlide> 
-                            );
-                        })} 
-                </Swiper> */}
+                <Cast />
             </div>
         </div>
     );

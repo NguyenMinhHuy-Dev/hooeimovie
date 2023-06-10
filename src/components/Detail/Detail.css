@@ -127,16 +127,4 @@
 
 .banner-info-button .banner-info-watch.favourite:hover .icon{
     color: #82C3EC;
-}
-
-.container-detail .banner-info-watch {
-    position: relative;
-}
-
-.subTitle {
-    position: absolute;
-    z-index: 99;
-    top: 100%;
-    left: -50%;
-    background-color: #131736;
-}
+} 
