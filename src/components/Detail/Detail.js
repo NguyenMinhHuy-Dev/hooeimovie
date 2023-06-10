@@ -1,22 +1,17 @@
-import { Link, useParams } from "react-router-dom";
-import { Banner } from "../Banner/Banner";
-import { Title } from "../Title/Title";
-import './Detail.css';
-import { useEffect, useState } from "react";
-import { Loading } from "../Loading/Loading";
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import KeyboardDoubleArrowRightTwoToneIcon from '@mui/icons-material/KeyboardDoubleArrowRightTwoTone';
-import { Trailer } from "../Trailer/Trailer";
-import { Stars } from "../Stars/Stars";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from 'swiper';
-import { Movie } from "../Movie/Movie";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useStore } from "../../stored";
+import { Movie } from "../Movie/Movie";
+import { Stars } from "../Stars/Stars";
+import { Title } from "../Title/Title";
 import { Cast } from "./Cast/Cast";
+import './Detail.css';
+import { Similar } from "./Similar/Similar";
+import { Reviews } from './Reviews/Reviews';
 
 export const Detail = () => { 
     const { media_type, id } = useParams();
@@ -146,7 +141,7 @@ export const Detail = () => {
                 {media_type === "tv" && (
                     <>
                         <div className="slider-head">
-                            <span className={`slider-head-title trending`}>.SEASONS.</span>
+                            <span className={`slider-head-title trending`}>SEASONS</span>
                         </div>
                         <div className="slider slider-extend see-all_movies"> 
                             {data?.seasons?.map((item) => {
@@ -159,7 +154,11 @@ export const Detail = () => {
                         </div>
                     </>
                 )}
+
                 <Cast />
+                <Reviews />
+                <Similar />
+
             </div>
         </div>
     );
