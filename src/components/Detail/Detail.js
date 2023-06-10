@@ -41,8 +41,7 @@ export const Detail = () => {
             .then((res) => res.json())
             .then((details) => { 
                 setData(details);
-                setLoading(false); 
-                console.log(details);
+                setLoading(false);  
             })
             .catch((err) => {
                 setLoading(false);
@@ -143,7 +142,7 @@ export const Detail = () => {
                         <div className="slider-head">
                             <span className={`slider-head-title trending`}>SEASONS</span>
                         </div>
-                        <div className="slider slider-extend see-all_movies"> 
+                        <div className="slider slider-extend see-all_movies season"> 
                             {data?.seasons?.map((item) => {
                                 return (
                                     <Link key={item.id} to={`/tv/detail/${item.id}`}>
@@ -156,7 +155,9 @@ export const Detail = () => {
                 )}
 
                 <Cast />
+
                 <Reviews />
+
                 <Similar />
 
             </div>

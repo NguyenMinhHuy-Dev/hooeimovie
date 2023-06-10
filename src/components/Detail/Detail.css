@@ -102,6 +102,10 @@
     margin-bottom: 50px;
 }
 
+.container-detail .container .season {
+    margin-bottom: 70px;
+}
+
 .banner-info .banner-info-button {
     display: flex;
     align-items: center;

@@ -1,3 +1,52 @@
-.reviews {
-    margin-top: 70px;
+.reviews { 
+    margin: 70px 70px 0; 
+}
+
+.reviews .review {
+    display: flex; 
+    margin-bottom: 40px;
+}
+
+.review-avatar {
+    width: 10%;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.review-avatar img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.review-detail {
+    width: 90%;
+    text-align: justify;
+    margin-left: 20px;
+    /* background-color: aliceblue; */
+}
+
+.review-info span {
+    color: #fff;
+    user-select: none;
+}
+
+.review-info .review-info--name {
+    font-size: 25px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #0093E9;
+    margin-right: 10px;
+}
+
+.review-info .review-info--date {
+    color: #ffffff;
+}
+
+.review-content {
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 10px;
+    color: #ffffffbb;
+    text-indent: 20px;
+    user-select: none;
 }
