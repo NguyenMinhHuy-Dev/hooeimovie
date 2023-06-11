@@ -32,6 +32,13 @@ export const Reviews = () => {
                 <span className={`slider-head-title trending`}>REVIEWS</span>
             </div>
             <div className='reviews-container'>
+                {reviews.length == 0 && 
+                    <ImageFade 
+                        lazy_src={
+                            "https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.15752-9/353225631_1186277066102217_8290600650192175262_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=fD39oCiUWqoAX_6GcHb&_nc_ht=scontent.fsgn2-4.fna&oh=03_AdRlS9mn_L7nR32RVVgGhk-6gP9VbEAUREzNjlcHbT1bSQ&oe=64AD22E5"
+                        }
+                    />
+                }
                 {reviews?.map(item =>  
                     <div key={item.id} className='review'>
                         <div className='review-avatar'>
