@@ -50,6 +50,7 @@ export const Detail = () => {
         };  
 
         setLoading(true);
+        scrollTop();
         getDetailMovie(media_type, id); 
     }, [id, media_type])
 

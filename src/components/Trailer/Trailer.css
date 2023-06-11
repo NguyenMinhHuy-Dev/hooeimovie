@@ -1,6 +1,6 @@
 .trailer-content {
     position: relative;
-    /* padding-top: 70px; */
+    padding-top: 70px;
     width: 100%;
     height: calc(100vh);
     z-index: 2;

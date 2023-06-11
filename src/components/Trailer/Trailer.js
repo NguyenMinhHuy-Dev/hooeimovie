@@ -13,7 +13,7 @@ export const Trailer = () => {
             .then((res) => res.json())
             .then((data) => {
                 setTrailer(data.results.find(item => (item.name.includes("Official Trailer") || item.name.includes("Final Trailer") || item.name.includes("Trailer") || item.name.includes("Official"))));
-                console.log(data.results);
+                // console.log(data.results);
             })
             .catch((err) => {
                 console.log(err);
@@ -29,8 +29,8 @@ export const Trailer = () => {
                 <div className="trailer-content">   
                     <iframe
                         style={{
-                            height: "100vh",
-                            pointerEvents: "none",
+                            height: "calc(100vh - 70px)",
+                            // pointerEvents: "none",
                             userSelect: "none",
                         }}
                         width="100%"  

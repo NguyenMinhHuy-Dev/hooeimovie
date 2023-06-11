@@ -15,6 +15,7 @@ export const Cast = () => {
             await fetch(`https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`)
             .then(res => res.json())
             .then((data) => {  
+                console.log("fuck");
                 setCast(data.cast.slice(0, 18));
                 setLoading(false);
             })
