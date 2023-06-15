@@ -14,6 +14,7 @@ import { auth } from './config/firebase';
 import { SeeAll } from './components/SeeAll/SeeAll';
 import { Detail } from './components/Detail/Detail';
 import { ScrollButton } from './components/ScrollButton/ScrollButton';
+import { TVSeasonDetail } from './components/Detail/TVSeasonDetail';
 
 function App() {
   
@@ -50,6 +51,7 @@ function App() {
           <Route path='/:media_type/:type' element={<SeeAll />} />
           <Route path='/discover' element={<SeeAll />} />
           <Route path='/:media_type/detail/:id' element={<Detail />} />
+          <Route path='/:media_type/detail/:id/season/:number' element={<TVSeasonDetail />} />
         </Routes>
         <Footer />
     </div>

@@ -14,7 +14,7 @@ import { Similar } from "./Similar/Similar";
 import { Reviews } from './Reviews/Reviews';
 import { Trailer } from '../Trailer/Trailer';
 
-export const Detail = () => { 
+export const TVSeasonDetail = () => { 
     const { media_type, id } = useParams();
 
     const [data, setData] = useState({});
