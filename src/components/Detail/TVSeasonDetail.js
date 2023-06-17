@@ -133,8 +133,8 @@ export const TVSeasonDetail = () => {
                 </div> 
             </div> 
 
-            {/* <div className="container"> 
-                {media_type === "tv" && (
+            <div className="container"> 
+                {/* {media_type === "tv" && (
                     <>
                         <div className="slider-head">
                             <span className={`slider-head-title trending`}>SEASONS</span>
@@ -149,7 +149,7 @@ export const TVSeasonDetail = () => {
                             })}
                         </div>
                     </>
-                )}
+                )} */}
 
                 <Cast />
 
@@ -157,7 +157,7 @@ export const TVSeasonDetail = () => {
 
                 <Similar />
 
-            </div> */}
+            </div>
         </div>
     );
 }
