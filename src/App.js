@@ -51,7 +51,7 @@ function App() {
           <Route path='/:media_type/:type' element={<SeeAll />} />
           <Route path='/discover' element={<SeeAll />} />
           <Route path='/:media_type/detail/:id' element={<Detail />} />
-          <Route path='/:media_type/detail/:id/season/:number' element={<TVSeasonDetail />} />
+          <Route path='/:media_type/detail/:id/season/:season_number' element={<TVSeasonDetail />} />
         </Routes>
         <Footer />
     </div>

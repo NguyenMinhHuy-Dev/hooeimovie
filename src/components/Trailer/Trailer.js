@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 
 export const Trailer = () => {
-    const { media_type, id } = useParams();
+    const { media_type, id, season_number } = useParams();
     const [trailer, setTrailer] = useState({});
 
     useEffect(() => { 
@@ -13,14 +13,27 @@ export const Trailer = () => {
             .then((res) => res.json())
             .then((data) => {
                 setTrailer(data.results.find(item => (item.name.includes("Official Trailer") || item.name.includes("Final Trailer") || item.name.includes("Trailer") || item.name.includes("Official"))));
-                // console.log(data.results);
+                console.log(data.results);
             })
             .catch((err) => {
                 console.log(err);
             });
         };
- 
-        getTrailer(media_type, id);
+        const getSeasonTrailer = (media_type, id, season_number) => {
+            fetch(`https://api.themoviedb.org/3/${media_type}/${id}/season/${season_number}/videos?api_key=${process.env.REACT_APP_API_KEY}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setTrailer(data.results.find(item => (item.name.includes("Official Trailer") || item.name.includes("Final Trailer") || item.name.includes("Trailer") || item.name.includes("Official"))));
+                console.log(data.results);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        };
+        if (season_number === undefined)
+            getTrailer(media_type, id);
+        else
+            getSeasonTrailer(media_type, id, season_number);
     }, [id, media_type])
 
     return (

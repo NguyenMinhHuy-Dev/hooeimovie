@@ -15,9 +15,10 @@ import { Reviews } from './Reviews/Reviews';
 import { Trailer } from '../Trailer/Trailer';
 
 export const TVSeasonDetail = () => { 
-    const { media_type, id } = useParams();
+    const { media_type, id, season_number } = useParams();
 
     const [data, setData] = useState({});
+    const [detail, setDetail] = useState({});
     const [loading, setLoading] = useState(false); 
 
     const [isFavourite, setIsFavourite] = useState(null);
@@ -37,8 +38,8 @@ export const TVSeasonDetail = () => {
     },[])
 
     useEffect(() => {
-        const getDetailMovie = async (media_type, id) => {
-            await fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}`)
+        const getDataMovie = async (media_type, id) => {
+            await fetch(`https://api.themoviedb.org/3/${media_type}/${id}/season/${season_number}?api_key=${process.env.REACT_APP_API_KEY}`)
             .then((res) => res.json())
             .then((details) => { 
                 console.log(details);
@@ -48,18 +49,31 @@ export const TVSeasonDetail = () => {
             .catch((err) => {
                 setLoading(false);
             });
-        };  
+        }; 
+        
+        const getDetailMovie = async (media_type, id) => {
+            await fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}`)
+            .then((res) => res.json())
+            .then((details) => {  
+                setDetail(details);
+                setLoading(false);  
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+        };
 
         setLoading(true);
         scrollTop();
-        getDetailMovie(media_type, id); 
+        getDetailMovie(media_type, id);
+        getDataMovie(media_type, id); 
     }, [id, media_type])
 
     return ( 
         <div className="container-detail">
             <Trailer /> 
             <div className={`banner ${loading ? 'skeleton' : ''}`} style={{
-                backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
+                backgroundImage: `url(https://image.tmdb.org/t/p/original${detail?.backdrop_path})`,
             }}>
                 <Title title={`${data.title || data.name || 'Name'} | ${data.original_title || data.original_name || 'Original Name'}`}/> 
    
@@ -80,36 +94,16 @@ export const TVSeasonDetail = () => {
                             ))}
                         </div>
                         <p className='banner-info-overview'>{data?.overview}</p>   
-                        {data?.release_date ? (
-                            <p className='banner-info-overview'>Release date: {data?.release_date}</p>   
-                        ) : (
-                            <p className='banner-info-overview'>Last air date: {data?.last_air_date}</p>    
-                        )}
-                        {data?.runtime ? (
-                            <span className='banner-info-overview'>Runtime: {data?.runtime} minutes</span> 
-                        ) : (
-                            <span className='banner-info-overview'>Runtime: {data?.episode_run_time} minutes / episode</span> 
-                        )}
-
-                        <p className='banner-info-overview'>Companies: {   
-                                data.production_companies &&
-                                data.production_companies.map(item => item.name).join(', ')
-                            }
-                        </p> 
-
-                        <p className='banner-info-overview'>Countries: {   
-                                data.production_countries &&
-                                data.production_countries.map(item => item.name).join(', ')
-                            }
-                        </p> 
-
-                        <Stars rating={data?.vote_average}/> 
+                        {data?.air_date && (
+                            <p className='banner-info-overview'>Release date: {data?.air_date}</p>   
+                        )}   
+                        <span className='banner-info-overview'>Runtime: {detail?.episode_run_time} minutes / episode</span><br></br>
+                        <span className='banner-info-overview'>Episodes: {data?.episodes?.length}</span>
+ 
                         <div className='banner-info-button'>
-                            {media_type === "movie" && 
-                                <span className='button banner-info-watch'>
-                                    Watch now
-                                </span>
-                            }   
+                            <span className='button banner-info-watch'>
+                                Watch now
+                            </span>
                             {user && 
                                 <> 
                                     <span 
@@ -139,7 +133,7 @@ export const TVSeasonDetail = () => {
                 </div> 
             </div> 
 
-            <div className="container"> 
+            {/* <div className="container"> 
                 {media_type === "tv" && (
                     <>
                         <div className="slider-head">
@@ -163,7 +157,7 @@ export const TVSeasonDetail = () => {
 
                 <Similar />
 
-            </div>
+            </div> */}
         </div>
     );
 }

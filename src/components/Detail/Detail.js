@@ -40,8 +40,8 @@ export const Detail = () => {
         const getDetailMovie = async (media_type, id) => {
             await fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}`)
             .then((res) => res.json())
-            .then((details) => { 
-                console.log(details);
+            .then((details) => {  
+                console.log(details.seasons)
                 setData(details);
                 setLoading(false);  
             })
@@ -85,23 +85,22 @@ export const Detail = () => {
                         ) : (
                             <p className='banner-info-overview'>Last air date: {data?.last_air_date}</p>    
                         )}
-                        {data?.runtime ? (
+                        <br></br>
+                        {data?.runtime && (
                             <span className='banner-info-overview'>Runtime: {data?.runtime} minutes</span> 
-                        ) : (
-                            <span className='banner-info-overview'>Runtime: {data?.episode_run_time} minutes / episode</span> 
-                        )}
-
-                        <p className='banner-info-overview'>Companies: {   
+                        )} 
+                        <br></br>
+                        <span className='banner-info-overview'>Companies: {   
                                 data.production_companies &&
                                 data.production_companies.map(item => item.name).join(', ')
                             }
-                        </p> 
-
-                        <p className='banner-info-overview'>Countries: {   
+                        </span> 
+                        <br></br>
+                        <span className='banner-info-overview'>Countries: {   
                                 data.production_countries &&
                                 data.production_countries.map(item => item.name).join(', ')
                             }
-                        </p> 
+                        </span> 
 
                         <Stars rating={data?.vote_average}/> 
                         <div className='banner-info-button'>
@@ -140,7 +139,7 @@ export const Detail = () => {
             </div> 
 
             <div className="container"> 
-                {media_type === "tv" && (
+                {media_type === "tv" && data?.seasons?.length > 1  && (
                     <>
                         <div className="slider-head">
                             <span className={`slider-head-title trending`}>SEASONS</span>
