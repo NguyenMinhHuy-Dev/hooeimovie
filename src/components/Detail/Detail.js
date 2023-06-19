@@ -104,10 +104,12 @@ export const Detail = () => {
 
                         <Stars rating={data?.vote_average}/> 
                         <div className='banner-info-button'>
-                            {media_type === "movie" && 
-                                <span className='button banner-info-watch'>
-                                    Watch now
-                                </span>
+                            {media_type === "movie" &&  
+                                <Link to={`/watch/movie/${id}`}>
+                                    <span className='button banner-info-watch'>
+                                        Watch now
+                                    </span>
+                                </Link>
                             }   
                             {user && 
                                 <> 

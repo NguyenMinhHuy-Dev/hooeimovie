@@ -15,6 +15,7 @@ import { SeeAll } from './components/SeeAll/SeeAll';
 import { Detail } from './components/Detail/Detail';
 import { ScrollButton } from './components/ScrollButton/ScrollButton';
 import { TVSeasonDetail } from './components/Detail/TVSeasonDetail';
+import { Watch } from './components/Watch/Watch';
 
 function App() {
   
@@ -52,6 +53,7 @@ function App() {
           <Route path='/discover' element={<SeeAll />} />
           <Route path='/:media_type/detail/:id' element={<Detail />} />
           <Route path='/:media_type/detail/:id/season/:season_number' element={<TVSeasonDetail />} />
+          <Route path='/watch/:media_type/:id' element={<Watch />} />
         </Routes>
         <Footer />
     </div>

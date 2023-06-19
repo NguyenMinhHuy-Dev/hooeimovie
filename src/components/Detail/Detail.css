@@ -132,3 +132,7 @@
 .banner-info-button .banner-info-watch.favourite:hover .icon{
     color: #82C3EC;
 } 
+
+.banner-info-button > a {
+    color: #000;
+}

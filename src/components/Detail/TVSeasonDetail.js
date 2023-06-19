@@ -88,8 +88,8 @@ export const TVSeasonDetail = () => {
 
                         <div className='banner-info-tag'>
                             <span className='banner-info-tag-type'>{media_type}</span> 
-                            {data.genres &&
-                                data.genres.map((item) => ( 
+                            {detail.genres &&
+                                detail.genres.map((item) => ( 
                                     <span key={item.id} className='banner-info-tag-genre'>{item.name}</span>  
                             ))}
                         </div>
@@ -101,10 +101,12 @@ export const TVSeasonDetail = () => {
                         <span className='banner-info-overview'>Episodes: {data?.episodes?.length}</span>
  
                         <div className='banner-info-button'>
-                            <span className='button banner-info-watch'>
-                                Watch now
-                            </span>
-                            {user && 
+                            <Link to={`/tv/${id}/season/${season_number}`}>
+                                <span className='button banner-info-watch'>
+                                    Watch now
+                                </span>
+                            </Link>
+                            {/* {user && 
                                 <> 
                                     <span 
                                         className='button banner-info-watch favourite'
@@ -127,7 +129,7 @@ export const TVSeasonDetail = () => {
                                         )}
                                     </span>
                                 </>
-                            }
+                            } */}
                         </div>
                     </div>
                 </div> 
