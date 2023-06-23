@@ -1,6 +1,7 @@
 .watch.container {
     min-height: 100vh; 
-    padding-top: 70px;
+    padding-top: 70px; 
+    z-index: 999;
 }
 
 .watch-player-episode {
@@ -13,8 +14,15 @@
 
 .watch-left {
     width: 70%;
-    aspect-ratio: 16/9;
-    background-color: aliceblue;
+    aspect-ratio: 16/9; 
+}
+
+.watch-left.full {
+    width: 100%;
+}
+
+#framez {
+    border-radius: 10px;
 }
 
 .watch-right {

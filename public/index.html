@@ -28,16 +28,11 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>React App</title>
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-
-  </body>
   <script>
     window.onload = function(){ 
         var iframe = document.getElementsByName("framez")[0] 
       
-        var nibba = document.getElementById("framez").src;
+        var nibba = document.getElementById("framez").src; 
         if(iframe.sandbox == 'allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation'){
             document.getElementById("framez").removeAttribute("sandbox"); 
         }
@@ -45,4 +40,9 @@
         iframe.sandbox = 'allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation'; 
     } 
   </script>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+  </body>
 </html>
